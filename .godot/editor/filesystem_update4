@@ -1,0 +1,7 @@
+res://Cenas/mundo.tscn
+res://Cenas/torre.tscn
+res://Cenas/projetil.tscn
+res://Cenas/inimigo.tscn
+res://Scripts/wave_manager.gd
+res://Cenas/menu_principal.tscn
+res://Scripts/menu_principal.gd

@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnyikjr0ysf8q"]
+
+[ext_resource type="Script" uid="uid://b6eut86pb3aig" path="res://Scripts/menu_principal.gd" id="1_5jrt5"]
+
+[sub_resource type="Gradient" id="Gradient_52tck"]
+offsets = PackedFloat32Array(0.035, 1)
+colors = PackedColorArray(0.0784314, 0.635294, 0.0784314, 1, 0.3975, 0.339387, 2.88785e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5jrt5"]
+gradient = SubResource("Gradient_52tck")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xc8du"]
+texture = SubResource("GradientTexture2D_5jrt5")
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_5jrt5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.0
+offset_top = -319.0
+offset_right = 331.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xc8du")
+
+[node name="VboxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VboxContainer"]
+layout_mode = 2
+text = "Tower Defense do Papai"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonIniciar" type="Button" parent="PanelContainer/VboxContainer"]
+layout_mode = 2
+text = "Iniciar"
+
+[node name="ButtonSair" type="Button" parent="PanelContainer/VboxContainer"]
+layout_mode = 2
+text = "Sair"

@@ -9,6 +9,9 @@ extends Node
 @onready var botao_3 = painel_upgrades.get_child(0).get_child(2)
 @onready var torre = $"../Torre"
 @onready var label_vida_base = $"../Vida_Canva/VidaBase"
+@onready var tela_fim_jogo = $"../Tela_Game_Over/PanelContainer"
+@onready var botao_reiniciar = tela_fim_jogo.get_child(0).get_child(1)
+@onready var botao_quit = tela_fim_jogo.get_child(0).get_child(2)
 
 var inimigos_vivos = 0
 
@@ -144,9 +147,6 @@ func _on_linha_de_chegada_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	if vida_da_base <= 0:
 		print("Game Over!")
-		var tela_fim_jogo = $"../Tela_Game_Over/PanelContainer"
-		var botao_reiniciar = tela_fim_jogo.get_child(0).get_child(1)
-		var botao_quit = tela_fim_jogo.get_child(0).get_child(2)
 		botao_reiniciar.pressed.connect(_reiniciar_jogo)
 		botao_quit.pressed.connect(_sair_do_jogo)
 		get_tree().paused = true
