@@ -1,0 +1,135 @@
+[gd_scene load_steps=6 format=3 uid="uid://1gqrqwmx46jc"]
+
+[ext_resource type="PackedScene" uid="uid://7hbuh8vjpqfo" path="res://Cenas/torre.tscn" id="1_oji8i"]
+[ext_resource type="Script" uid="uid://8gh3yn3per8t" path="res://Scripts/wave_manager.gd" id="2_j5dva"]
+[ext_resource type="PackedScene" uid="uid://cmc0jd60rvwup" path="res://Cenas/inimigo.tscn" id="3_8gp82"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8gp82"]
+font_size = 19
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gp82"]
+size = Vector2(1260, 13)
+
+[node name="Mundo" type="Node2D"]
+
+[node name="Torre" parent="." instance=ExtResource("1_oji8i")]
+position = Vector2(570, 590)
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("2_j5dva")
+inimigo1_scene = ExtResource("3_8gp82")
+
+[node name="Vida_Canva" type="CanvasLayer" parent="."]
+
+[node name="Vida" type="Label" parent="Vida_Canva"]
+offset_left = 17.0
+offset_top = 53.0
+offset_right = 122.0
+offset_bottom = 76.0
+text = "Vida da torre:"
+
+[node name="VidaBase" type="Label" parent="Vida_Canva"]
+offset_left = 129.0
+offset_top = 50.0
+offset_right = 169.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Dinheiro_Canva" type="CanvasLayer" parent="."]
+
+[node name="Dinheiro" type="Label" parent="Dinheiro_Canva"]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 88.0
+offset_bottom = 42.0
+text = "Dinheiro:"
+metadata/_edit_group_ = true
+
+[node name="Valor" type="Label" parent="Dinheiro_Canva"]
+offset_left = 95.0
+offset_top = 17.0
+offset_right = 135.0
+offset_bottom = 44.0
+text = "0"
+label_settings = SubResource("LabelSettings_8gp82")
+metadata/_edit_group_ = true
+
+[node name="Painel_Canva" type="CanvasLayer" parent="."]
+
+[node name="PainelDeUpgrades" type="PanelContainer" parent="Painel_Canva"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 19.9
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OrganizadorVertical" type="HBoxContainer" parent="Painel_Canva/PainelDeUpgrades"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonUpgrade1" type="Button" parent="Painel_Canva/PainelDeUpgrades/OrganizadorVertical"]
+layout_mode = 2
+
+[node name="ButtonUpgrade2" type="Button" parent="Painel_Canva/PainelDeUpgrades/OrganizadorVertical"]
+layout_mode = 2
+
+[node name="ButtonUpgrade3" type="Button" parent="Painel_Canva/PainelDeUpgrades/OrganizadorVertical"]
+layout_mode = 2
+
+[node name="ButtonPular" type="Button" parent="Painel_Canva/PainelDeUpgrades/OrganizadorVertical"]
+layout_mode = 2
+
+[node name="LinhaDeChegada" type="Area2D" parent="."]
+position = Vector2(7, 0)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LinhaDeChegada"]
+position = Vector2(572, 642)
+shape = SubResource("RectangleShape2D_8gp82")
+
+[node name="Tela_Game_Over" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="Tela_Game_Over"]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -36.5
+offset_right = 59.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tela_Game_Over/PanelContainer"]
+layout_mode = 2
+
+[node name="FimDeJogo" type="Label" parent="Tela_Game_Over/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "VOCE MORREU!
+GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="botao_reiniciar" type="Button" parent="Tela_Game_Over/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="botao_quit" type="Button" parent="Tela_Game_Over/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sair do Jogo"
+
+[connection signal="body_entered" from="LinhaDeChegada" to="WaveManager" method="_on_linha_de_chegada_body_entered"]

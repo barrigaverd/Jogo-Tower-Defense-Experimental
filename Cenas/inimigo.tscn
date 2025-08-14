@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmc0jd60rvwup"]
+
+[ext_resource type="Script" uid="uid://ddnexlthfg7ca" path="res://Scripts/inimigo.gd" id="1_y60ay"]
+[ext_resource type="Texture2D" uid="uid://b4cxwlglksstk" path="res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile270.png" id="2_duo5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdsc4"]
+size = Vector2(57, 37)
+
+[node name="Inimigo" type="CharacterBody2D"]
+scale = Vector2(0.480002, 0.600001)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_y60ay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57801
+texture = ExtResource("2_duo5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -3.5)
+shape = SubResource("RectangleShape2D_rdsc4")

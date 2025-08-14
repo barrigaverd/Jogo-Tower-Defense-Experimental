@@ -1,0 +1,14 @@
+CanvasLayer
+Button
+Label
+RichTextLabel
+VBoxContainer
+PanelContainer
+Container
+CollisionShape2D
+Area2D
+HBoxContainer
+Control
+Node
+Sprite2D
+CharacterBody2D
