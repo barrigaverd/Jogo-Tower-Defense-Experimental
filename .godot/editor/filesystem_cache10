@@ -1,23 +1,28 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1755186571
+::res://::1755391406
+.gitignore.txt::TextFile/TextFile::-1::1755187045::0::1::::<><><>0<>0<><>::
 ::res://addons/::1755186040
 ::res://addons/godot-git-plugin/::1755186040
-git_plugin.gdextension::GDExtension::7632650555965131397::1755186040::0::1::::<><><>0<>0<><>::
-plugin.cfg::TextFile::-1::1755186040::0::1::::<><><>0<>0<><>::
-THIRDPARTY.md::TextFile::-1::1755186040::0::1::::<><><>0<>0<><>::
+git_plugin.gdextension::GDExtension/GDExtension::7632650555965131397::1755186040::0::1::::<><><>0<>0<><>::
+plugin.cfg::TextFile/TextFile::-1::1755186040::0::1::::<><><>0<>0<><>::
+THIRDPARTY.md::TextFile/TextFile::-1::1755186040::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-git-plugin/linux/::1755186040
 ::res://addons/godot-git-plugin/macos/::1755186040
-::res://addons/godot-git-plugin/win64/::1755186564
-::res://Cenas/::1755184989
-inimigo.tscn::PackedScene::5620770450133458087::1755183975::0::1::::<><><>0<>0<><>::uid://ddnexlthfg7ca::::res://Scripts/inimigo.gd<>uid://b4cxwlglksstk::::res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile270.png
-mundo.tscn::PackedScene::1838298906430283528::1755184989::0::1::::<><><>0<>0<><>::uid://7hbuh8vjpqfo::::res://Cenas/torre.tscn<>uid://8gh3yn3per8t::::res://Scripts/wave_manager.gd<>uid://cmc0jd60rvwup::::res://Cenas/inimigo.tscn
-projetil.tscn::PackedScene::5292244499476478124::1755183975::0::1::::<><><>0<>0<><>::uid://bs0euo0nyq63c::::res://Scripts/projetil.gd<>uid://bmnnrfsajuxlv::::res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile272.png
-torre.tscn::PackedScene::2260590493175095008::1755183975::0::1::::<><><>0<>0<><>::uid://vsegvb0jvrf4::::res://Scripts/torre.gd<>uid://dq0l8ba4ljdmc::::res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile249.png<>uid://chnuq1ym12uv1::::res://Cenas/projetil.tscn
-::res://Scripts/::1755184989
-inimigo.gd::GDScript::7396950041460193892::1755183734::0::1::::<>CharacterBody2D<><>0<>0<><>::
-projetil.gd::GDScript::3701708671448752790::1755183751::0::1::::<>Area2D<><>0<>0<><>::
-torre.gd::GDScript::1511379204390166563::1755184989::0::1::::<>CharacterBody2D<><>0<>0<><>::
-wave_manager.gd::GDScript::2329094409693405449::1755183975::0::1::::<>Node<><>0<>0<><>::
+::res://addons/godot-git-plugin/win64/::1755391401
+::res://Cenas/::1755391377
+inimigo.tscn::PackedScene::5620770450133458087::1755391242::0::1::::<><><>0<>0<><>::uid://ddnexlthfg7ca::::res://Scripts/inimigo.gd<>uid://b4cxwlglksstk::::res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile270.png
+inimigo_tanque.tscn::PackedScene::1492181975079841295::1755391242::0::1::::<><><>0<>0<><>::uid://1d6i3hin3e1g::::res://Scripts/inimigo_tanque.gd<>uid://dtvi1utpdni5r::::res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile271.png
+menu_principal.tscn::PackedScene::5735345494799736822::1755391242::0::1::::<><><>0<>0<><>::uid://b6eut86pb3aig::::res://Scripts/menu_principal.gd
+mundo.tscn::PackedScene::1838298906430283528::1755391377::0::1::::<><><>0<>0<><>::uid://7hbuh8vjpqfo::::res://Cenas/torre.tscn<>uid://8gh3yn3per8t::::res://Scripts/wave_manager.gd<>uid://cmc0jd60rvwup::::res://Cenas/inimigo.tscn<>uid://vi3awdpqe536::::res://Cenas/inimigo_tanque.tscn
+projetil.tscn::PackedScene::5292244499476478124::1755391242::0::1::::<><><>0<>0<><>::uid://bs0euo0nyq63c::::res://Scripts/projetil.gd<>uid://bmnnrfsajuxlv::::res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile272.png
+torre.tscn::PackedScene::2260590493175095008::1755391242::0::1::::<><><>0<>0<><>::uid://vsegvb0jvrf4::::res://Scripts/torre.gd<>uid://dq0l8ba4ljdmc::::res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile249.png<>uid://chnuq1ym12uv1::::res://Cenas/projetil.tscn
+::res://Scripts/::1755391188
+inimigo.gd::GDScript::7396950041460193892::1755388227::0::1::::<>CharacterBody2D<><>0<>0<><>::
+inimigo_tanque.gd::GDScript::1833001062827417594::1755388227::0::1::::<>CharacterBody2D<><>0<>0<><>::
+menu_principal.gd::GDScript/GDScript::4571782399271326502::1755191821::0::1::::<>Control<><>0<>0<><>::
+projetil.gd::GDScript/GDScript::3701708671448752790::1755183751::0::1::::<>Area2D<><>0<>0<><>::
+torre.gd::GDScript::1511379204390166563::1755389293::0::1::::<>CharacterBody2D<><>0<>0<><>::
+wave_manager.gd::GDScript::2329094409693405449::1755391188::0::1::::<>Node<><>0<>0<><>::
 ::res://Tower Defense (top-down)/::1754665545
 License.txt::TextFile/TextFile::-1::1754665543::0::1::::<><><>0<>0<><>::
 Preview.png::CompressedTexture2D/CompressedTexture2D::3578870713783546024::1754665544::1754665545::1::::<><><>0<>0<>b711b5f23af23418146149603d89157a<>res://.godot/imported/Preview.png-1525ac0a92729e02b3173b94a1ab90d2.ctex::

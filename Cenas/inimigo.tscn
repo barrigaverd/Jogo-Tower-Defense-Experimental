@@ -11,6 +11,8 @@ scale = Vector2(0.480002, 0.600001)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_y60ay")
+vida = 50
+valor_do_inimigo = 25
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.57801

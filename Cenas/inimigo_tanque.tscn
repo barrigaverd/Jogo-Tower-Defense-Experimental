@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://vi3awdpqe536"]
+
+[ext_resource type="Script" uid="uid://1d6i3hin3e1g" path="res://Scripts/inimigo_tanque.gd" id="1_pod0u"]
+[ext_resource type="Texture2D" uid="uid://dtvi1utpdni5r" path="res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile271.png" id="2_qt2e7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdsc4"]
+size = Vector2(57, 37)
+
+[node name="Inimigo" type="CharacterBody2D"]
+scale = Vector2(0.480002, 0.600001)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_pod0u")
+velocidade = 30
+vida = 150
+valor_do_inimigo = 35
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57801
+texture = ExtResource("2_qt2e7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -3.5)
+shape = SubResource("RectangleShape2D_rdsc4")

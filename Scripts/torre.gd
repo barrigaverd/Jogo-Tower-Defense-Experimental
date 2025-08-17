@@ -61,16 +61,17 @@ func _on_alcance_body_exited(body: Node2D) -> void:
 
 func aplicar_melhoria(dicionario_melhoria):
 	var nome_do_upgrade = dicionario_melhoria["tipo_upgrade"]
+	var valor_do_upgrade = dicionario_melhoria["valor"]
 	if nome_do_upgrade == "aumentar_dano":
-		aumentar_dano()
+		aumentar_dano(valor_do_upgrade)
 	elif nome_do_upgrade == "aumentar_velocidade":
-		aumentar_velocidade_ataque()
+		aumentar_velocidade_ataque(valor_do_upgrade)
 	elif nome_do_upgrade == "aumentar_alcance":
-		aumentar_alcance()
+		aumentar_alcance(valor_do_upgrade)
 
-func aumentar_dano():
-	dano_da_torre += 5
-func aumentar_velocidade_ataque():
-	timer.wait_time = timer.wait_time - (timer.wait_time * 0.1)
-func aumentar_alcance():
-	alcance.scale = alcance.scale + (alcance.scale * 0.1)
+func aumentar_dano(valor_do_upgrade):
+	dano_da_torre += valor_do_upgrade
+func aumentar_velocidade_ataque(valor_do_upgrade):
+	timer.wait_time = timer.wait_time - (timer.wait_time * valor_do_upgrade)
+func aumentar_alcance(valor_do_upgrade):
+	alcance.scale = alcance.scale + (alcance.scale * valor_do_upgrade)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1gqrqwmx46jc"]
+[gd_scene load_steps=7 format=3 uid="uid://1gqrqwmx46jc"]
 
 [ext_resource type="PackedScene" uid="uid://7hbuh8vjpqfo" path="res://Cenas/torre.tscn" id="1_oji8i"]
 [ext_resource type="Script" uid="uid://8gh3yn3per8t" path="res://Scripts/wave_manager.gd" id="2_j5dva"]
 [ext_resource type="PackedScene" uid="uid://cmc0jd60rvwup" path="res://Cenas/inimigo.tscn" id="3_8gp82"]
+[ext_resource type="PackedScene" uid="uid://vi3awdpqe536" path="res://Cenas/inimigo_tanque.tscn" id="4_qboq2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8gp82"]
 font_size = 19
@@ -19,6 +20,7 @@ position = Vector2(570, 590)
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("2_j5dva")
 inimigo1_scene = ExtResource("3_8gp82")
+inimigo_tanque_scene = ExtResource("4_qboq2")
 
 [node name="Vida_Canva" type="CanvasLayer" parent="."]
 
@@ -34,6 +36,20 @@ offset_left = 129.0
 offset_top = 50.0
 offset_right = 169.0
 offset_bottom = 78.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Onda_Atual" type="CanvasLayer" parent="."]
+
+[node name="numeroDaOnda" type="Label" parent="Onda_Atual"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 28.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
@@ -129,6 +145,44 @@ layout_mode = 2
 text = "Reiniciar"
 
 [node name="botao_quit" type="Button" parent="Tela_Game_Over/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sair do Jogo"
+
+[node name="Tela_pausa" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="Tela_pausa"]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -36.5
+offset_right = 59.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tela_pausa/PanelContainer"]
+layout_mode = 2
+
+[node name="FimDeJogo" type="Label" parent="Tela_pausa/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="botao_voltar" type="Button" parent="Tela_pausa/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Voltar"
+
+[node name="botao_reiniciar" type="Button" parent="Tela_pausa/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="botao_quit" type="Button" parent="Tela_pausa/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sair do Jogo"
 

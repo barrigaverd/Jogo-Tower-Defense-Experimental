@@ -1,6 +1,7 @@
 extends Node
 
 @export var inimigo1_scene : PackedScene
+@export var inimigo_tanque_scene : PackedScene
 @onready var dinheiro_label = $"../Dinheiro_Canva/Valor"
 @onready var painel_upgrades = $"../Painel_Canva/PainelDeUpgrades"
 @onready var botao_pular = painel_upgrades.get_child(0).get_child(3)
@@ -12,13 +13,24 @@ extends Node
 @onready var tela_fim_jogo = $"../Tela_Game_Over/PanelContainer"
 @onready var botao_reiniciar = tela_fim_jogo.get_child(0).get_child(1)
 @onready var botao_quit = tela_fim_jogo.get_child(0).get_child(2)
+@onready var texto_onda_atual = $"../Onda_Atual/numeroDaOnda"
+@onready var tela_pausa = $"../Tela_pausa/PanelContainer"
+@onready var botao_voltar_pausa = tela_pausa.get_child(0).get_child(1)
+@onready var botao_reiniciar_pausa = tela_pausa.get_child(0).get_child(2)
+@onready var botao_quit_pausa = tela_pausa.get_child(0).get_child(3)
 
 var inimigos_vivos = 0
 
 var dinheiro_jogador = 0
 @export var vida_da_base = 100
 
-var dicionario_de_ondas = {"Onda 1": 5, "Onda 2": 10, "Onda 3": 25, "Onda 4": 50}
+var dicionario_de_ondas = {
+	"Onda 1": {"normal": 8, "tanque": 0},
+	"Onda 2": {"normal": 5, "tanque": 1},
+	"Onda 3": {"normal": 4, "tanque": 4},
+	"Onda 4": {"normal": 20, "tanque": 2},
+	"Onda 5": {"normal": 15, "tanque": 5}
+	}
 var nome_das_ondas = []
 var catalogo_de_upgrades = []
 var onda_atual_index = 0
@@ -26,22 +38,25 @@ var onda_atual_index = 0
 var upgrade_aumentar_dano = {
 	"nome_para_mostrar": "Canhão Melhorado",
 	"descricao": "Aumenta o dano dos projéteis em 5.",
-	"custo": 100,
-	"tipo_upgrade": "aumentar_dano"
+	"custo": 120,
+	"tipo_upgrade": "aumentar_dano",
+	"valor" : 10 
 }
 
 var upgrade_aumentar_velocidade_ataque_torre = {
 	"nome_para_mostrar": "+ Velocidade na Torre",
 	"descricao": "Aumenta a velocidade de ataque da torre em 10%.",
 	"custo": 100,
-	"tipo_upgrade": "aumentar_velocidade"
+	"tipo_upgrade": "aumentar_velocidade",
+	"valor" : 0.1
 }
 
 var upgrade_alcance_melhorado = {
 	"nome_para_mostrar": "Mira de Longo Alcance",
 	"descricao": "Aumenta o alcance da torre em 15%.",
-	"custo": 120,
-	"tipo_upgrade": "aumentar_alcance"
+	"custo": 100,
+	"tipo_upgrade": "aumentar_alcance",
+	"valor" : 0.05
 }
 
 func _ready() -> void:
@@ -49,7 +64,13 @@ func _ready() -> void:
 	catalogo_de_upgrades.append(upgrade_aumentar_velocidade_ataque_torre);
 	catalogo_de_upgrades.append(upgrade_alcance_melhorado);
 	
+	botao_reiniciar.pressed.connect(_reiniciar_jogo)
+	botao_quit.pressed.connect(_sair_do_jogo)
+	
 	botao_pular.pressed.connect(_on_botao_pular_pressionado)
+	botao_voltar_pausa.pressed.connect(_voltar_jogo)
+	botao_reiniciar_pausa.pressed.connect(_reiniciar_jogo)
+	botao_quit_pausa.pressed.connect(_sair_do_jogo)
 
 	nome_das_ondas = dicionario_de_ondas.keys()
 	
@@ -120,25 +141,36 @@ func _on_upgrade_escolhido(upgrade_clicado):
 	iniciar_proxima_onda()
 	
 func iniciar_proxima_onda():
+	
+	
+	var largura_da_tela = get_viewport().get_visible_rect().size.x
 	painel_upgrades.visible = false
-	var nome_da_onda_atual = nome_das_ondas[onda_atual_index]
-	var quantidade_de_inimigos = dicionario_de_ondas[nome_da_onda_atual]
+	var nome_da_onda_atual = nome_das_ondas[onda_atual_index] #pega a primeira onda "onda_1"
+	texto_onda_atual.text = nome_da_onda_atual
+	var quantidade_de_inimigos = dicionario_de_ondas[nome_da_onda_atual] #"{"normal": 5, "tanque": 0}" retorna um dicionario de inimigos
 	
-	print("Iniciando", nome_da_onda_atual)
+	print("Iniciando ", nome_da_onda_atual)
 	
-	for ini in range(quantidade_de_inimigos):
+	for i in range(quantidade_de_inimigos["normal"]):
+		inimigos_vivos += 1
+		var inimigo = inimigo1_scene.instantiate()
+		var x_aleatorio = randf_range(0, largura_da_tela)
+		await get_tree().create_timer(1).timeout
+		inimigo.position = Vector2(x_aleatorio, -50)
+		get_parent().add_child(inimigo)
+		inimigo.morreu.connect(_on_inimigo_morreu)
+	
+	for i in range(quantidade_de_inimigos["tanque"]):
 		inimigos_vivos += 1
 		# 1. Crie um NOVO inimigo a cada repetição
-		var inimigo = inimigo1_scene.instantiate()
+		var inimigo = inimigo_tanque_scene.instantiate()
 		# 2. Espere um pouco
 		await  get_tree().create_timer(0.5).timeout
 		# 3. Defina a posição e adicione à cena
-		var largura_da_tela = get_viewport().get_visible_rect().size.x
 		var x_aleatorio = randf_range(0, largura_da_tela)
 		inimigo.position = Vector2(x_aleatorio, -50)
 		get_parent().add_child(inimigo)
 		inimigo.morreu.connect(_on_inimigo_morreu)
-
 
 func _on_linha_de_chegada_body_entered(body: Node2D) -> void:
 	vida_da_base -= 10
@@ -147,8 +179,6 @@ func _on_linha_de_chegada_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	if vida_da_base <= 0:
 		print("Game Over!")
-		botao_reiniciar.pressed.connect(_reiniciar_jogo)
-		botao_quit.pressed.connect(_sair_do_jogo)
 		get_tree().paused = true
 		tela_fim_jogo.visible = true
 
@@ -159,3 +189,12 @@ func _reiniciar_jogo():
 func _sair_do_jogo():
 	get_tree().paused = false
 	get_tree().quit()
+
+func _voltar_jogo():
+	tela_pausa.visible = false
+	get_tree().paused = false
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().paused = true
+		tela_pausa.visible = true

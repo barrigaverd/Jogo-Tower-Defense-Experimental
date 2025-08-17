@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 signal morreu(valor_recompensa)
 
-@export_category("Configurações do Inimigo")
+@export_category("Configurações do Inimigo_tanque")
 @export var velocidade = 50
 @export var vida = 40
-@export var valor_do_inimigo = 10
+@export var valor_do_inimigo = 25
 
 func _process(delta: float) -> void:
 	var direcao = Vector2(0, 1)
