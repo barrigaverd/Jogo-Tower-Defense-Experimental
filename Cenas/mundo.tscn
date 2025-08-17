@@ -10,12 +10,12 @@ font_size = 19
 font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gp82"]
-size = Vector2(1260, 13)
+size = Vector2(1333.75, 14.5)
 
 [node name="Mundo" type="Node2D"]
 
 [node name="Torre" parent="." instance=ExtResource("1_oji8i")]
-position = Vector2(570, 590)
+position = Vector2(243, 240)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("2_j5dva")
@@ -46,13 +46,16 @@ text = "0"
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 28.0
+offset_left = -23.0
+offset_top = 19.0
+offset_right = 17.0
+offset_bottom = 47.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Dinheiro_Canva" type="CanvasLayer" parent="."]
 
@@ -110,7 +113,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LinhaDeChegada"]
-position = Vector2(572, 642)
+position = Vector2(632, 724)
 shape = SubResource("RectangleShape2D_8gp82")
 
 [node name="Tela_Game_Over" type="CanvasLayer" parent="."]

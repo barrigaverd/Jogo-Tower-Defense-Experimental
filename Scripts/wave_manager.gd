@@ -19,10 +19,12 @@ extends Node
 @onready var botao_reiniciar_pausa = tela_pausa.get_child(0).get_child(2)
 @onready var botao_quit_pausa = tela_pausa.get_child(0).get_child(3)
 
+
 var inimigos_vivos = 0
 
 var dinheiro_jogador = 0
 @export var vida_da_base = 100
+
 
 var dicionario_de_ondas = {
 	"Onda 1": {"normal": 8, "tanque": 0},
@@ -75,6 +77,7 @@ func _ready() -> void:
 	nome_das_ondas = dicionario_de_ondas.keys()
 	
 	label_vida_base.text = str(vida_da_base)
+	texto_onda_atual.global_position = Vector2((1280 / 2), 20)
 	
 	iniciar_proxima_onda()
 		
@@ -141,39 +144,43 @@ func _on_upgrade_escolhido(upgrade_clicado):
 	iniciar_proxima_onda()
 	
 func iniciar_proxima_onda():
-	
-	
 	var largura_da_tela = get_viewport().get_visible_rect().size.x
 	painel_upgrades.visible = false
+	var lista_de_inimigos = []
 	var nome_da_onda_atual = nome_das_ondas[onda_atual_index] #pega a primeira onda "onda_1"
+	var detahles_da_onda = dicionario_de_ondas[nome_da_onda_atual] #dicionario de inimigos
 	texto_onda_atual.text = nome_da_onda_atual
-	var quantidade_de_inimigos = dicionario_de_ondas[nome_da_onda_atual] #"{"normal": 5, "tanque": 0}" retorna um dicionario de inimigos
 	
 	print("Iniciando ", nome_da_onda_atual)
 	
-	for i in range(quantidade_de_inimigos["normal"]):
+	for i in range(detahles_da_onda["normal"]):
+		lista_de_inimigos.append("normal")
+	for i in range(detahles_da_onda["tanque"]):
+		lista_de_inimigos.append("tanque")
+	
+	#lista_de_inimigos = ["normal","normal","normal","normal","normal","tanque","tanque","tanque"]
+	lista_de_inimigos.shuffle()
+	
+	for i in range(len(lista_de_inimigos)):
+		var inimigo_a_ser_criado = null
 		inimigos_vivos += 1
-		var inimigo = inimigo1_scene.instantiate()
+		
+		if lista_de_inimigos[i] == "normal":
+			inimigo_a_ser_criado = inimigo1_scene
+		elif lista_de_inimigos[i] == "tanque":
+			inimigo_a_ser_criado = inimigo_tanque_scene
+		
+		var inimigo = inimigo_a_ser_criado.instantiate()
 		var x_aleatorio = randf_range(0, largura_da_tela)
 		await get_tree().create_timer(1).timeout
 		inimigo.position = Vector2(x_aleatorio, -50)
 		get_parent().add_child(inimigo)
 		inimigo.morreu.connect(_on_inimigo_morreu)
-	
-	for i in range(quantidade_de_inimigos["tanque"]):
-		inimigos_vivos += 1
-		# 1. Crie um NOVO inimigo a cada repetição
-		var inimigo = inimigo_tanque_scene.instantiate()
-		# 2. Espere um pouco
-		await  get_tree().create_timer(0.5).timeout
-		# 3. Defina a posição e adicione à cena
-		var x_aleatorio = randf_range(0, largura_da_tela)
-		inimigo.position = Vector2(x_aleatorio, -50)
-		get_parent().add_child(inimigo)
-		inimigo.morreu.connect(_on_inimigo_morreu)
 
 func _on_linha_de_chegada_body_entered(body: Node2D) -> void:
-	vida_da_base -= 10
+	print(body.name)
+	vida_da_base -= body.dano_na_base
+	body.texto_flutuante(body.dano_na_base)
 	label_vida_base.text = str(vida_da_base)
 	_on_inimigo_morreu(0)
 	body.queue_free()

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://egrexwvqdtwy"]
+
+[ext_resource type="Script" uid="uid://d2d84pou60da0" path="res://Scripts/texto_de_dano.gd" id="1_g4b2q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4b2q"]
+font_size = 10
+
+[node name="texto_de_dano" type="Label"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g4b2q")
+script = ExtResource("1_g4b2q")

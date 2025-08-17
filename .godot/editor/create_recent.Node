@@ -1,5 +1,9 @@
-Button
+HBoxContainer
+TileMap
+TextureRect
+Timer
 Label
+Button
 VBoxContainer
 Control
 BoxContainer
@@ -9,6 +13,3 @@ RichTextLabel
 Container
 CollisionShape2D
 Area2D
-HBoxContainer
-Node
-Sprite2D

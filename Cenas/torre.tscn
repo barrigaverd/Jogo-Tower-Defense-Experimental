@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://7hbuh8vjpqfo"]
 
 [ext_resource type="Script" uid="uid://vsegvb0jvrf4" path="res://Scripts/torre.gd" id="1_mgsi1"]
-[ext_resource type="Texture2D" uid="uid://dq0l8ba4ljdmc" path="res://Tower Defense (top-down)/PNG/Default size/towerDefense_tile249.png" id="2_j3rtk"]
 [ext_resource type="PackedScene" uid="uid://chnuq1ym12uv1" path="res://Cenas/projetil.tscn" id="2_wrlih"]
+[ext_resource type="Texture2D" uid="uid://15d0ogmaxbrb" path="res://Assets/Tiles/tile_0018.png" id="3_j3rtk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrlih"]
 size = Vector2(42, 55)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3rtk"]
-radius = 392.957
+radius = 307.165
 
 [node name="Torre" type="CharacterBody2D"]
 scale = Vector2(0.65456, 0.623152)
@@ -22,8 +22,9 @@ position = Vector2(19, 1.19209e-07)
 rotation = -1.57668
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("2_j3rtk")
+rotation = 4.71179
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_j3rtk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.000196815
