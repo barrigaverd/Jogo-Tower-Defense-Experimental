@@ -10,10 +10,10 @@ size = Vector2(42, 55)
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3rtk"]
 radius = 307.165
 
-[node name="Torre" type="CharacterBody2D"]
+[node name="Torre" type="CharacterBody2D" groups=["torre"]]
 scale = Vector2(0.65456, 0.623152)
-collision_layer = 0
-collision_mask = 0
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_mgsi1")
 projetil_scena = ExtResource("2_wrlih")
 

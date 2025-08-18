@@ -67,6 +67,9 @@ func _on_alcance_body_entered(body: Node2D) -> void:
 func _on_alcance_body_exited(body: Node2D) -> void:
 	if body in alvos_no_alcance:
 		alvos_no_alcance.erase(body)
+		
+func receber_dano():
+	pass
 
 func aplicar_melhoria(dicionario_melhoria):
 	var nome_do_upgrade = dicionario_melhoria["tipo_upgrade"]

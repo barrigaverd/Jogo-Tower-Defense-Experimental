@@ -176,9 +176,14 @@ func iniciar_proxima_onda():
 		inimigo.position = Vector2(x_aleatorio, -50)
 		get_parent().add_child(inimigo)
 		inimigo.morreu.connect(_on_inimigo_morreu)
+		inimigo.atacou_a_base.connect(_on_inimigo_atacou_a_base)
+		
+func _on_inimigo_atacou_a_base(dano):
+	vida_da_base -= dano
+	label_vida_base.text = str(vida_da_base)
+	_on_inimigo_morreu(0)
 
 func _on_linha_de_chegada_body_entered(body: Node2D) -> void:
-	print(body.name)
 	vida_da_base -= body.dano_na_base
 	body.texto_flutuante(body.dano_na_base)
 	label_vida_base.text = str(vida_da_base)

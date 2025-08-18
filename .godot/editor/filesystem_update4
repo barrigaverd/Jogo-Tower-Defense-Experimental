@@ -1,13 +1,11 @@
-res://Cenas/mundo.tscn
-res://Scripts/wave_manager.gd
 res://Cenas/torre.tscn
+res://Scripts/inimigo.gd
+res://Scripts/torre.gd
+res://Scripts/wave_manager.gd
+res://Cenas/mundo.tscn
 res://Cenas/projetil.tscn
 res://Cenas/inimigo.tscn
 res://Cenas/menu_principal.tscn
 res://Cenas/inimigo_tanque.tscn
-res://Scripts/inimigo.gd
 res://Cenas/texto_de_dano.tscn
-res://Scripts/texto_de_dano.gd
 res://Scripts/inimigo_tanque.gd
-res://Scripts/torre.gd
-res://Cenas/new_theme.tres
