@@ -1,11 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://1gqrqwmx46jc"]
+[gd_scene load_steps=12 format=3 uid="uid://1gqrqwmx46jc"]
 
 [ext_resource type="PackedScene" uid="uid://7hbuh8vjpqfo" path="res://Cenas/torre.tscn" id="1_oji8i"]
 [ext_resource type="Script" uid="uid://8gh3yn3per8t" path="res://Scripts/wave_manager.gd" id="2_j5dva"]
 [ext_resource type="PackedScene" uid="uid://cmc0jd60rvwup" path="res://Cenas/inimigo.tscn" id="3_8gp82"]
 [ext_resource type="PackedScene" uid="uid://vi3awdpqe536" path="res://Cenas/inimigo_tanque.tscn" id="4_qboq2"]
+[ext_resource type="FontFile" uid="uid://ctagv3dbbs3jl" path="res://Cenas/tema_fontes.tres" id="5_1ag4k"]
+[ext_resource type="StyleBox" uid="uid://cuc55qbeur5fy" path="res://Cenas/estilodospaineis.tres" id="6_osa5f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjsl6"]
+font = ExtResource("5_1ag4k")
+font_size = 19
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yn71n"]
+font = ExtResource("5_1ag4k")
+font_size = 19
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c6pvx"]
+font = ExtResource("5_1ag4k")
+font_size = 19
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nt6ue"]
+font = ExtResource("5_1ag4k")
+font_size = 19
+font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8gp82"]
+font = ExtResource("5_1ag4k")
 font_size = 19
 font_color = Color(1, 1, 0, 1)
 
@@ -28,15 +51,17 @@ offset_top = 53.0
 offset_right = 122.0
 offset_bottom = 76.0
 text = "Vida da torre:"
+label_settings = SubResource("LabelSettings_bjsl6")
 
 [node name="VidaBase" type="Label" parent="Vida_Canva"]
-offset_left = 129.0
-offset_top = 50.0
-offset_right = 169.0
-offset_bottom = 78.0
+offset_left = 268.0
+offset_top = 53.0
+offset_right = 308.0
+offset_bottom = 81.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
+label_settings = SubResource("LabelSettings_yn71n")
 
 [node name="Onda_Atual" type="CanvasLayer" parent="."]
 
@@ -52,6 +77,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
+label_settings = SubResource("LabelSettings_c6pvx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -63,13 +89,14 @@ offset_top = 19.0
 offset_right = 88.0
 offset_bottom = 42.0
 text = "Dinheiro:"
+label_settings = SubResource("LabelSettings_nt6ue")
 metadata/_edit_group_ = true
 
 [node name="Valor" type="Label" parent="Dinheiro_Canva"]
-offset_left = 95.0
-offset_top = 17.0
-offset_right = 135.0
-offset_bottom = 44.0
+offset_left = 188.0
+offset_top = 19.0
+offset_right = 228.0
+offset_bottom = 46.0
 text = "0"
 label_settings = SubResource("LabelSettings_8gp82")
 metadata/_edit_group_ = true
@@ -88,6 +115,7 @@ offset_right = 19.9
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_osa5f")
 
 [node name="OrganizadorVertical" type="HBoxContainer" parent="Painel_Canva/PainelDeUpgrades"]
 layout_mode = 2
@@ -121,6 +149,7 @@ offset_right = 59.5
 offset_bottom = 36.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_osa5f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Tela_Game_Over/PanelContainer"]
 layout_mode = 2
@@ -156,6 +185,7 @@ offset_right = 59.5
 offset_bottom = 36.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_osa5f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Tela_pausa/PanelContainer"]
 layout_mode = 2

@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://vsegvb0jvrf4" path="res://Scripts/torre.gd" id="1_mgsi1"]
 [ext_resource type="PackedScene" uid="uid://chnuq1ym12uv1" path="res://Cenas/projetil.tscn" id="2_wrlih"]
 [ext_resource type="Texture2D" uid="uid://15d0ogmaxbrb" path="res://Assets/Tiles/tile_0018.png" id="3_j3rtk"]
-[ext_resource type="Texture2D" uid="uid://b3k0c1ljkdao0" path="res://Assets/AlcanceSprite.png" id="4_wrlih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrlih"]
 size = Vector2(42, 55)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3rtk"]
 radius = 341.366
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3rtk"]
+load_path = "res://.godot/imported/AlcanceSprite.png-8c16d1d114aacde026397c468d31154f.ctex"
 
 [node name="Torre" type="CharacterBody2D" groups=["torre"]]
 scale = Vector2(0.65456, 0.623152)
@@ -49,7 +51,7 @@ autostart = true
 modulate = Color(0.597176, 0.597176, 0.597176, 1)
 position = Vector2(-1.17421, -0.705208)
 scale = Vector2(2.31, 2.31)
-texture = ExtResource("4_wrlih")
+texture = SubResource("CompressedTexture2D_j3rtk")
 
 [connection signal="body_entered" from="alcance" to="." method="_on_alcance_body_entered"]
 [connection signal="body_exited" from="alcance" to="." method="_on_alcance_body_exited"]
