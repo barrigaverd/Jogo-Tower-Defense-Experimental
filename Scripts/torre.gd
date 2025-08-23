@@ -6,7 +6,9 @@ extends CharacterBody2D
 @export var dano_da_torre = 40
 var alvo_atual = null
 var alvos_no_alcance = []
-#referencia da cena do projetil
+var tem_dano_area = false
+var tamanho_do_dano_area = 0
+
 
 #referencia direta a cena Maker2d sem usar a funcao ready
 @onready var maker = $Marker2D
@@ -57,6 +59,9 @@ func _on_timer_timeout() -> void:
 	if alvo_atual != null:
 		var projetil = projetil_scena.instantiate()
 		projetil.dano_projetil = dano_da_torre
+		if tem_dano_area:
+			projetil.tem_dano_em_area = true
+			projetil.tamanho_do_dano_area += tamanho_do_dano_area
 		projetil.global_position = maker.global_position
 		projetil.rotation = maker.global_rotation
 		get_parent().add_child(projetil)
@@ -72,14 +77,20 @@ func receber_dano():
 	pass
 
 func aplicar_melhoria(dicionario_melhoria):
-	var nome_do_upgrade = dicionario_melhoria["tipo_upgrade"]
-	var valor_do_upgrade = dicionario_melhoria["valor"]
+	var nome_do_upgrade = dicionario_melhoria["tipo_upgrade"] #"aumentar_alcance"
+	var valor_do_upgrade = dicionario_melhoria["valor"] #0.05
 	if nome_do_upgrade == "aumentar_dano":
 		aumentar_dano(valor_do_upgrade)
 	elif nome_do_upgrade == "aumentar_velocidade":
 		aumentar_velocidade_ataque(valor_do_upgrade)
 	elif nome_do_upgrade == "aumentar_alcance":
 		aumentar_alcance(valor_do_upgrade)
+	elif nome_do_upgrade == "dano_em_area":
+		aumentar_dano_area(valor_do_upgrade)
+		
+func aumentar_dano_area(valor_do_upgrade):
+	tem_dano_area = true
+	tamanho_do_dano_area += valor_do_upgrade
 
 func aumentar_dano(valor_do_upgrade):
 	dano_da_torre += valor_do_upgrade

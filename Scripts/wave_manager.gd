@@ -37,6 +37,14 @@ var nome_das_ondas = []
 var catalogo_de_upgrades = []
 var onda_atual_index = 0
 
+var upgrade_dano_em_area = {
+	"nome_para_mostrar": "Dano em área",
+	"descricao": "Projétil com dano em área.",
+	"custo": 120,
+	"tipo_upgrade": "dano_em_area",
+	"valor" : 5 
+}
+
 var upgrade_aumentar_dano = {
 	"nome_para_mostrar": "Canhão Melhorado",
 	"descricao": "Aumenta o dano dos projéteis em 5.",
@@ -64,7 +72,8 @@ var upgrade_alcance_melhorado = {
 func _ready() -> void:
 	catalogo_de_upgrades.append(upgrade_aumentar_dano);
 	catalogo_de_upgrades.append(upgrade_aumentar_velocidade_ataque_torre);
-	catalogo_de_upgrades.append(upgrade_alcance_melhorado);
+	#catalogo_de_upgrades.append(upgrade_alcance_melhorado);
+	catalogo_de_upgrades.append(upgrade_dano_em_area);
 	
 	botao_reiniciar.pressed.connect(_reiniciar_jogo)
 	botao_quit.pressed.connect(_sair_do_jogo)
@@ -140,7 +149,6 @@ func _on_upgrade_escolhido(upgrade_clicado):
 	dinheiro_jogador -= upgrade_clicado["custo"]
 	dinheiro_label.text = str(dinheiro_jogador)
 	torre.aplicar_melhoria(upgrade_clicado)
-	
 	iniciar_proxima_onda()
 	
 func iniciar_proxima_onda():

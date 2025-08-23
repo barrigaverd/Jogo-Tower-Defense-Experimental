@@ -1,3 +1,9 @@
+Sprite2D
+AnimationPlayer
+AnimatedSprite2D
+ColorRect
+CollisionShape2D
+Area2D
 HBoxContainer
 TileMap
 TextureRect
@@ -6,10 +12,3 @@ Label
 Button
 VBoxContainer
 Control
-BoxContainer
-PanelContainer
-CanvasLayer
-RichTextLabel
-Container
-CollisionShape2D
-Area2D
