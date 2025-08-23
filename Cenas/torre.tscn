@@ -8,7 +8,7 @@
 size = Vector2(42, 55)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3rtk"]
-radius = 307.165
+radius = 342.552
 
 [node name="Torre" type="CharacterBody2D" groups=["torre"]]
 scale = Vector2(0.65456, 0.623152)
@@ -38,7 +38,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="alcance"]
 position = Vector2(-1.35644, 0)
-scale = Vector2(1, 0.392)
+scale = Vector2(1, 0.79941)
 shape = SubResource("CircleShape2D_j3rtk")
 one_way_collision_margin = 0.0
 

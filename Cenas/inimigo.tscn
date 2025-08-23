@@ -18,7 +18,7 @@ valor_do_inimigo = 25
 texto_do_dano = ExtResource("2_rdsc4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 3.14159
+rotation = 1.5708
 scale = Vector2(2, 2)
 texture = ExtResource("3_duo5w")
 

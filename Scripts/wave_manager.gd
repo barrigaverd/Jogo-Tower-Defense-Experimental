@@ -19,7 +19,6 @@ extends Node
 @onready var botao_reiniciar_pausa = tela_pausa.get_child(0).get_child(2)
 @onready var botao_quit_pausa = tela_pausa.get_child(0).get_child(3)
 
-
 var inimigos_vivos = 0
 
 var dinheiro_jogador = 0
@@ -72,7 +71,7 @@ var upgrade_alcance_melhorado = {
 func _ready() -> void:
 	catalogo_de_upgrades.append(upgrade_aumentar_dano);
 	catalogo_de_upgrades.append(upgrade_aumentar_velocidade_ataque_torre);
-	#catalogo_de_upgrades.append(upgrade_alcance_melhorado);
+	catalogo_de_upgrades.append(upgrade_alcance_melhorado);
 	catalogo_de_upgrades.append(upgrade_dano_em_area);
 	
 	botao_reiniciar.pressed.connect(_reiniciar_jogo)
@@ -152,7 +151,9 @@ func _on_upgrade_escolhido(upgrade_clicado):
 	iniciar_proxima_onda()
 	
 func iniciar_proxima_onda():
-	var largura_da_tela = get_viewport().get_visible_rect().size.x
+	var largura_da_tela = get_viewport().get_visible_rect().size.x #1280
+	var altura_da_tela = get_viewport().get_visible_rect().size.y #720
+	
 	painel_upgrades.visible = false
 	var lista_de_inimigos = []
 	var nome_da_onda_atual = nome_das_ondas[onda_atual_index] #pega a primeira onda "onda_1"
@@ -179,9 +180,24 @@ func iniciar_proxima_onda():
 			inimigo_a_ser_criado = inimigo_tanque_scene
 		
 		var inimigo = inimigo_a_ser_criado.instantiate()
-		var x_aleatorio = randf_range(0, largura_da_tela)
+		
+		var sorteio = randi() % 4
+		
 		await get_tree().create_timer(1).timeout
-		inimigo.position = Vector2(x_aleatorio, -50)
+		
+		if sorteio == 0:
+			var x_aleatorio = randf_range(0, largura_da_tela)
+			inimigo.position = Vector2(x_aleatorio, -50)
+		elif sorteio == 1:
+			var x_aleatorio = randf_range(0, largura_da_tela)
+			inimigo.position = Vector2(x_aleatorio, (altura_da_tela + 50))
+		elif sorteio == 2:
+			var y_aleatorio = randf_range(0, altura_da_tela)
+			inimigo.position = Vector2(-50, y_aleatorio)
+		elif sorteio == 3:
+			var y_aleatorio = randf_range(0, altura_da_tela)
+			inimigo.position = Vector2((largura_da_tela + 50), y_aleatorio)
+		
 		get_parent().add_child(inimigo)
 		inimigo.morreu.connect(_on_inimigo_morreu)
 		inimigo.atacou_a_base.connect(_on_inimigo_atacou_a_base)
@@ -190,17 +206,6 @@ func _on_inimigo_atacou_a_base(dano):
 	vida_da_base -= dano
 	label_vida_base.text = str(vida_da_base)
 	_on_inimigo_morreu(0)
-
-func _on_linha_de_chegada_body_entered(body: Node2D) -> void:
-	vida_da_base -= body.dano_na_base
-	body.texto_flutuante(body.dano_na_base)
-	label_vida_base.text = str(vida_da_base)
-	_on_inimigo_morreu(0)
-	body.queue_free()
-	if vida_da_base <= 0:
-		print("Game Over!")
-		get_tree().paused = true
-		tela_fim_jogo.visible = true
 
 func _reiniciar_jogo():
 	get_tree().paused = false

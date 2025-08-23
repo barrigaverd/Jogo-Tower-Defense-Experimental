@@ -9,10 +9,15 @@ signal atacou_a_base(dano)
 @export var valor_do_inimigo = 10
 @export var texto_do_dano :PackedScene
 @export var dano_na_base = 10
+@onready var torre = $"../Torre"
 
 func _process(delta: float) -> void:
-	velocity = Vector2(0, 1)
+	var direcao =  torre.global_position - global_position
+	direcao = direcao.normalized()
+	look_at(torre.global_position)
+	velocity = direcao
 	velocity = velocity * velocidade
+	
 	
 	var colisao = move_and_slide()
 	if colisao:
