@@ -13,7 +13,7 @@ var tamanho_do_dano_area = 0
 #referencia direta a cena Maker2d sem usar a funcao ready
 @onready var maker = $Marker2D
 @onready var timer = $alcance/Timer
-@onready var alcance = $alcance/CollisionShape2D
+@onready var alcance = $alcance
 
 func _ready() -> void:
 	global_position = Vector2((1280/2), (720/2))

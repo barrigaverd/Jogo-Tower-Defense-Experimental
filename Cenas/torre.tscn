@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://7hbuh8vjpqfo"]
+[gd_scene load_steps=7 format=3 uid="uid://7hbuh8vjpqfo"]
 
 [ext_resource type="Script" uid="uid://vsegvb0jvrf4" path="res://Scripts/torre.gd" id="1_mgsi1"]
 [ext_resource type="PackedScene" uid="uid://chnuq1ym12uv1" path="res://Cenas/projetil.tscn" id="2_wrlih"]
 [ext_resource type="Texture2D" uid="uid://15d0ogmaxbrb" path="res://Assets/Tiles/tile_0018.png" id="3_j3rtk"]
+[ext_resource type="Texture2D" uid="uid://b3k0c1ljkdao0" path="res://Assets/AlcanceSprite.png" id="4_wrlih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrlih"]
 size = Vector2(42, 55)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3rtk"]
-radius = 342.552
+radius = 341.366
 
 [node name="Torre" type="CharacterBody2D" groups=["torre"]]
 scale = Vector2(0.65456, 0.623152)
@@ -32,18 +33,23 @@ shape = SubResource("RectangleShape2D_wrlih")
 
 [node name="alcance" type="Area2D" parent="."]
 position = Vector2(-1, 1)
-scale = Vector2(1.1, 1.418)
+scale = Vector2(1.1, 1.1)
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="alcance"]
 position = Vector2(-1.35644, 0)
-scale = Vector2(1, 0.79941)
 shape = SubResource("CircleShape2D_j3rtk")
 one_way_collision_margin = 0.0
 
 [node name="Timer" type="Timer" parent="alcance"]
 autostart = true
+
+[node name="AlcanceSprite" type="Sprite2D" parent="alcance"]
+modulate = Color(0.597176, 0.597176, 0.597176, 1)
+position = Vector2(-1.17421, -0.705208)
+scale = Vector2(2.31, 2.31)
+texture = ExtResource("4_wrlih")
 
 [connection signal="body_entered" from="alcance" to="." method="_on_alcance_body_entered"]
 [connection signal="body_exited" from="alcance" to="." method="_on_alcance_body_exited"]

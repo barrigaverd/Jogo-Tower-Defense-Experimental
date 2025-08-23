@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bs0euo0nyq63c" path="res://Scripts/projetil.gd" id="1_dat4j"]
 [ext_resource type="Texture2D" uid="uid://c4vvksjplr15c" path="res://Assets/Tiles/tile_0000.png" id="2_dat4j"]
-[ext_resource type="Texture2D" uid="uid://cnfi7poi7ip7f" path="res://Assets/Tiles/tile_0008.png" id="3_6lw2o"]
+[ext_resource type="Texture2D" uid="uid://bphnw41ko1qnj" path="res://Assets/SpriteExplosao.png" id="3_6lw2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6s1an"]
 radius = 9.0
@@ -30,6 +30,8 @@ shape = SubResource("CircleShape2D_dat4j")
 
 [node name="SpriteExplosao" type="Sprite2D" parent="AreaDeExplosao"]
 visible = false
+position = Vector2(-2.38419e-07, -4.76837e-07)
+scale = Vector2(0.07, 0.07)
 texture = ExtResource("3_6lw2o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

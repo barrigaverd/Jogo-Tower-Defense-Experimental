@@ -203,9 +203,13 @@ func iniciar_proxima_onda():
 		inimigo.atacou_a_base.connect(_on_inimigo_atacou_a_base)
 		
 func _on_inimigo_atacou_a_base(dano):
-	vida_da_base -= dano
-	label_vida_base.text = str(vida_da_base)
-	_on_inimigo_morreu(0)
+	if vida_da_base > 1:
+		vida_da_base -= dano
+		label_vida_base.text = str(vida_da_base)
+		_on_inimigo_morreu(0)
+	else:
+		get_tree().paused = true
+		tela_fim_jogo.visible = true
 
 func _reiniciar_jogo():
 	get_tree().paused = false

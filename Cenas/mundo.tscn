@@ -12,7 +12,8 @@ font_color = Color(1, 1, 0, 1)
 [node name="Mundo" type="Node2D"]
 
 [node name="Torre" parent="." instance=ExtResource("1_oji8i")]
-position = Vector2(243, 240)
+position = Vector2(640, 357)
+scale = Vector2(0.6, 0.6)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("2_j5dva")

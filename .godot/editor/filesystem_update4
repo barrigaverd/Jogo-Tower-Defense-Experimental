@@ -1,13 +1,9 @@
-res://Cenas/projetil.tscn
-res://Scripts/projetil.gd
-res://Scripts/torre.gd
-res://Cenas/mundo.tscn
 res://Cenas/torre.tscn
+res://Cenas/mundo.tscn
+res://Cenas/projetil.tscn
 res://Cenas/inimigo.tscn
 res://Cenas/inimigo_tanque.tscn
 res://Cenas/menu_principal.tscn
 res://Cenas/texto_de_dano.tscn
+res://Scripts/torre.gd
 res://Scripts/wave_manager.gd
-res://.gitignore.txt
-res://Scripts/inimigo.gd
-res://Scripts/inimigo_tanque.gd
