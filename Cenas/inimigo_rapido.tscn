@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch7gn1bngbhl3"]
+
+[ext_resource type="Script" uid="uid://dndga1mwvqefd" path="res://Scripts/inimigo_rapido.gd" id="1_1wwms"]
+[ext_resource type="Texture2D" uid="uid://bq1a73y51hsul" path="res://Assets/Ships/ship_0018.png" id="2_5jei7"]
+[ext_resource type="PackedScene" uid="uid://egrexwvqdtwy" path="res://Cenas/texto_de_dano.tscn" id="2_5xees"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdsc4"]
+size = Vector2(57, 37)
+
+[node name="Inimigo" type="CharacterBody2D"]
+scale = Vector2(0.480002, 0.600001)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_1wwms")
+texto_do_dano = ExtResource("2_5xees")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("2_5jei7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -3.5)
+shape = SubResource("RectangleShape2D_rdsc4")

@@ -1,9 +1,12 @@
-res://Cenas/torre.tscn
 res://Cenas/mundo.tscn
+res://Cenas/tema_fontes.tres
+res://Cenas/estilodospaineis.tres
+res://Cenas/torre.tscn
 res://Cenas/projetil.tscn
 res://Cenas/inimigo.tscn
 res://Cenas/inimigo_tanque.tscn
-res://Cenas/menu_principal.tscn
 res://Cenas/texto_de_dano.tscn
-res://Scripts/torre.gd
+res://Cenas/menu_principal.tscn
+res://Cenas/inimigo_rapido.tscn
+res://Scripts/inimigo_rapido.gd
 res://Scripts/wave_manager.gd

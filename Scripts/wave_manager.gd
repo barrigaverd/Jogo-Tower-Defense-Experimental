@@ -2,6 +2,7 @@ extends Node
 
 @export var inimigo1_scene : PackedScene
 @export var inimigo_tanque_scene : PackedScene
+@export var inimigo_rapido_scene : PackedScene
 @onready var dinheiro_label = $"../Dinheiro_Canva/Valor"
 @onready var painel_upgrades = $"../Painel_Canva/PainelDeUpgrades"
 @onready var botao_pular = painel_upgrades.get_child(0).get_child(3)
@@ -26,11 +27,11 @@ var dinheiro_jogador = 0
 
 
 var dicionario_de_ondas = {
-	"Onda 1": {"normal": 8, "tanque": 0},
-	"Onda 2": {"normal": 5, "tanque": 1},
-	"Onda 3": {"normal": 4, "tanque": 4},
-	"Onda 4": {"normal": 20, "tanque": 2},
-	"Onda 5": {"normal": 15, "tanque": 5}
+	"Onda 1": {"normal": 8, "tanque": 0, "rapido": 1},
+	"Onda 2": {"normal": 5, "tanque": 1, "rapido": 4},
+	"Onda 3": {"normal": 4, "tanque": 4, "rapido": 2},
+	"Onda 4": {"normal": 20, "tanque": 2, "rapido": 10},
+	"Onda 5": {"normal": 10, "tanque": 5, "rapido": 15}
 	}
 var nome_das_ondas = []
 var catalogo_de_upgrades = []
@@ -94,7 +95,7 @@ func _on_inimigo_morreu(valor):
 	dinheiro_jogador += valor
 	dinheiro_label.text = str(dinheiro_jogador)
 	
-	if inimigos_vivos <= 0:
+	if inimigos_vivos < 1:
 		_mostrar_loja_de_upgrades()
 
 func _mostrar_loja_de_upgrades():
@@ -166,6 +167,8 @@ func iniciar_proxima_onda():
 		lista_de_inimigos.append("normal")
 	for i in range(detahles_da_onda["tanque"]):
 		lista_de_inimigos.append("tanque")
+	for i in range(detahles_da_onda["rapido"]):
+		lista_de_inimigos.append("rapido")
 	
 	#lista_de_inimigos = ["normal","normal","normal","normal","normal","tanque","tanque","tanque"]
 	lista_de_inimigos.shuffle()
@@ -178,6 +181,8 @@ func iniciar_proxima_onda():
 			inimigo_a_ser_criado = inimigo1_scene
 		elif lista_de_inimigos[i] == "tanque":
 			inimigo_a_ser_criado = inimigo_tanque_scene
+		elif lista_de_inimigos[i] == "rapido":
+			inimigo_a_ser_criado = inimigo_rapido_scene
 		
 		var inimigo = inimigo_a_ser_criado.instantiate()
 		
