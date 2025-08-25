@@ -27,22 +27,53 @@ var dinheiro_jogador = 0
 
 
 var dicionario_de_ondas = {
-	"Onda 1": {"normal": 8, "tanque": 0, "rapido": 1},
-	"Onda 2": {"normal": 5, "tanque": 1, "rapido": 4},
-	"Onda 3": {"normal": 4, "tanque": 4, "rapido": 2},
-	"Onda 4": {"normal": 20, "tanque": 2, "rapido": 10},
-	"Onda 5": {"normal": 10, "tanque": 5, "rapido": 15}
-	}
+	# --- Bloco 1: Introdução e Primeiros Desafios ---
+	"Onda 1": {"normal": 5, "tanque": 0, "rapido": 0},      # Apenas inimigos normais para o jogador entender o básico.
+	"Onda 2": {"normal": 8, "tanque": 0, "rapido": 0},
+	"Onda 3": {"normal": 5, "tanque": 0, "rapido": 3},      # Introduz o inimigo rápido.
+	"Onda 4": {"normal": 0, "tanque": 0, "rapido": 10},     # Primeira onda "teste": Foco total em velocidade.
+	"Onda 5": {"normal": 7, "tanque": 1, "rapido": 5},      # Introduz o tanque junto com os outros.
+
+	# --- Bloco 2: Aumentando a Complexidade ---
+	"Onda 6": {"normal": 10, "tanque": 2, "rapido": 7},
+	"Onda 7": {"normal": 15, "tanque": 0, "rapido": 15},    # Desafio de quantidade e velocidade.
+	"Onda 8": {"normal": 5, "tanque": 5, "rapido": 5},      # Onda perfeitamente balanceada.
+	"Onda 9": {"normal": 20, "tanque": 3, "rapido": 0},      # Testa o dano bruto contra inimigos normais.
+	"Onda 10": {"normal": 10, "tanque": 7, "rapido": 10},   # Grande desafio de meio de jogo.
+
+	# --- Bloco 3: Desafios Temáticos ---
+	"Onda 11": {"normal": 0, "tanque": 8, "rapido": 5},     # "A Muralha": Foco em inimigos tanque.
+	"Onda 12": {"normal": 30, "tanque": 0, "rapido": 10},    # "O Enxame": Muitos inimigos fracos e rápidos.
+	"Onda 13": {"normal": 15, "tanque": 5, "rapido": 15},
+	"Onda 14": {"normal": 10, "tanque": 10, "rapido": 0},    # Força o jogador a ter um bom dano.
+	"Onda 15": {"normal": 20, "tanque": 8, "rapido": 20},    # Onda caótica com muitos inimigos.
+
+	# --- Bloco 4: Rumo ao Fim de Jogo ---
+	"Onda 16": {"normal": 0, "tanque": 15, "rapido": 0},    # Teste final de dano contra tanques.
+	"Onda 17": {"normal": 0, "tanque": 0, "rapido": 40},    # Teste final de velocidade de ataque.
+	"Onda 18": {"normal": 25, "tanque": 10, "rapido": 25},
+	"Onda 19": {"normal": 40, "tanque": 15, "rapido": 10},   # Uma das ondas mais difíceis.
+	"Onda 20": {"normal": 30, "tanque": 20, "rapido": 30}    # A onda final: um desafio com tudo!
+}
+
 var nome_das_ondas = []
 var catalogo_de_upgrades = []
 var onda_atual_index = 0
+
+var upgrade_tiro_perfurante = {
+	"nome_para_mostrar": "Tiro Perfurante",
+	"descricao": "Projétil atinge vários inimigos.",
+	"custo": 120,
+	"tipo_upgrade": "tiro_perfurante",
+	"valor" : 1
+}
 
 var upgrade_dano_em_area = {
 	"nome_para_mostrar": "Dano em área",
 	"descricao": "Projétil com dano em área.",
 	"custo": 120,
 	"tipo_upgrade": "dano_em_area",
-	"valor" : 5 
+	"valor" : 0.7
 }
 
 var upgrade_aumentar_dano = {
@@ -74,6 +105,7 @@ func _ready() -> void:
 	catalogo_de_upgrades.append(upgrade_aumentar_velocidade_ataque_torre);
 	catalogo_de_upgrades.append(upgrade_alcance_melhorado);
 	catalogo_de_upgrades.append(upgrade_dano_em_area);
+	catalogo_de_upgrades.append(upgrade_tiro_perfurante);
 	
 	botao_reiniciar.pressed.connect(_reiniciar_jogo)
 	botao_quit.pressed.connect(_sair_do_jogo)
@@ -94,8 +126,9 @@ func _on_inimigo_morreu(valor):
 	inimigos_vivos -= 1
 	dinheiro_jogador += valor
 	dinheiro_label.text = str(dinheiro_jogador)
+	print("Quantidade de inimigos vivos: " + str(inimigos_vivos))
 	
-	if inimigos_vivos < 1:
+	if inimigos_vivos <= 0:
 		_mostrar_loja_de_upgrades()
 
 func _mostrar_loja_de_upgrades():
@@ -208,13 +241,13 @@ func iniciar_proxima_onda():
 		inimigo.atacou_a_base.connect(_on_inimigo_atacou_a_base)
 		
 func _on_inimigo_atacou_a_base(dano):
-	if vida_da_base > 1:
-		vida_da_base -= dano
-		label_vida_base.text = str(vida_da_base)
-		_on_inimigo_morreu(0)
-	else:
+	vida_da_base -= dano
+	label_vida_base.text = str(vida_da_base)
+	if vida_da_base <= 0:
 		get_tree().paused = true
 		tela_fim_jogo.visible = true
+	else:
+		_on_inimigo_morreu(0)
 
 func _reiniciar_jogo():
 	get_tree().paused = false

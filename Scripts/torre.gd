@@ -1,19 +1,29 @@
 extends CharacterBody2D
 
 @export var projetil_scena : PackedScene 
+@export var granada_scena: PackedScene
+@export var perfurante_scene : PackedScene
 @export_category("Configurações Torre")
 @export var velocidade = 250
 @export var dano_da_torre = 40
+
 var alvo_atual = null
 var alvos_no_alcance = []
 var tem_dano_area = false
+var tem_tiro_perfurante = false
+var contagem_de_perfuracoes = 1
 var tamanho_do_dano_area = 0
+var tipo_de_projetil_atual = "normal"
+var tamanho_atual_da_explosao = 5.0
 
 
 #referencia direta a cena Maker2d sem usar a funcao ready
 @onready var maker = $Marker2D
-@onready var timer = $alcance/Timer
+@onready var timer = $alcance/TimerNormal
 @onready var alcance = $alcance
+@onready var timer_granada = $alcance/TimerGranada
+@onready var timer_perfurante = $alcance/TimerPerfurante
+
 
 func _ready() -> void:
 	global_position = Vector2((1280/2), (720/2))
@@ -43,12 +53,29 @@ func _on_timer_timeout() -> void:
 	if alvo_atual != null:
 		var projetil = projetil_scena.instantiate()
 		projetil.dano_projetil = dano_da_torre
-		if tem_dano_area:
-			projetil.tem_dano_em_area = true
-			projetil.tamanho_do_dano_area += tamanho_do_dano_area
 		projetil.global_position = maker.global_position
 		projetil.rotation = maker.global_rotation
 		get_parent().add_child(projetil)
+			
+func _on_timer_granada_timeout() -> void:
+	if alvo_atual != null:
+		var granada = granada_scena.instantiate()
+		granada.dano_projetil = dano_da_torre
+		granada.global_position = maker.global_position
+		granada.rotation = maker.global_rotation
+		granada.tem_dano_em_area = tem_dano_area
+		granada.tamanho_atual_da_explosao = tamanho_atual_da_explosao
+		get_parent().add_child(granada)
+
+func _on_timer_perfurante_timeout() -> void:
+	if alvo_atual != null:
+		var perfurante = perfurante_scene.instantiate()
+		perfurante.dano_projetil = dano_da_torre
+		perfurante.global_position = maker.global_position
+		perfurante.rotation = maker.global_rotation
+		perfurante.tem_tiro_perfurante = tem_tiro_perfurante
+		perfurante.contagem_de_perfuracoes = contagem_de_perfuracoes
+		get_parent().add_child(perfurante)
 
 func _on_alcance_body_entered(body: Node2D) -> void:
 	alvos_no_alcance.append(body)
@@ -56,9 +83,6 @@ func _on_alcance_body_entered(body: Node2D) -> void:
 func _on_alcance_body_exited(body: Node2D) -> void:
 	if body in alvos_no_alcance:
 		alvos_no_alcance.erase(body)
-		
-func receber_dano():
-	pass
 
 func aplicar_melhoria(dicionario_melhoria):
 	var nome_do_upgrade = dicionario_melhoria["tipo_upgrade"] #"aumentar_alcance"
@@ -71,10 +95,16 @@ func aplicar_melhoria(dicionario_melhoria):
 		aumentar_alcance(valor_do_upgrade)
 	elif nome_do_upgrade == "dano_em_area":
 		aumentar_dano_area(valor_do_upgrade)
-		
+	elif nome_do_upgrade == "tiro_perfurante":
+		ativar_tiro_perfurante(valor_do_upgrade)
+
+func ativar_tiro_perfurante(valor_do_upgrade):
+	contagem_de_perfuracoes += valor_do_upgrade
+	timer_perfurante.start()
+
 func aumentar_dano_area(valor_do_upgrade):
-	tem_dano_area = true
-	tamanho_do_dano_area += valor_do_upgrade
+	tamanho_atual_da_explosao += valor_do_upgrade
+	timer_granada.start()
 
 func aumentar_dano(valor_do_upgrade):
 	dano_da_torre += valor_do_upgrade

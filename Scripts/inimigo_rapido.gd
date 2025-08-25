@@ -4,12 +4,13 @@ signal morreu(valor_recompensa)
 signal atacou_a_base(dano)
 
 @export_category("Configurações do Inimigo")
-@export var velocidade = 100
+@export var velocidade = 50
 @export var vida = 20
 @export var valor_do_inimigo = 5
 @export var texto_do_dano :PackedScene
 @export var dano_na_base = 5
 @onready var torre = $"../Torre"
+var ja_morreu = false
 
 func _process(delta: float) -> void:
 	var direcao =  torre.global_position - global_position
@@ -29,16 +30,19 @@ func _process(delta: float) -> void:
 			queue_free()
 
 func receber_dano(dano_recebido):
-	vida -= dano_recebido
-	
-	texto_flutuante(dano_recebido)
-	
-	print("O inimigo tomou, ", dano_recebido, " de dano!")
-	
-	if vida <= 0:
-		print("O inimigo Morreu!")
-		morreu.emit(valor_do_inimigo)
-		queue_free()
+	if ja_morreu:
+		return
+	else:
+		vida -= dano_recebido
+		texto_flutuante(dano_recebido)
+		
+		print("O inimigo tomou, ", dano_recebido, " de dano!")
+		
+		if vida <= 0:
+			print("O inimigo Morreu!")
+			ja_morreu = true
+			morreu.emit(valor_do_inimigo)
+			queue_free()
 	
 func texto_flutuante(dano_recebido):
 	var texto_flutuante = texto_do_dano.instantiate()
