@@ -5,10 +5,11 @@ extends CharacterBody2D
 @export var perfurante_scene : PackedScene
 @export_category("Configurações Torre")
 @export var velocidade = 250
-@export var dano_da_torre = 25
+@export var dano_da_torre = 35
 
 var alvo_atual = null
 var alvos_no_alcance = []
+var alvos_ordenados = []
 var tem_dano_area = false
 var tem_tiro_perfurante = false
 var contagem_de_perfuracoes = 1
@@ -29,28 +30,34 @@ func _ready() -> void:
 	global_position = Vector2((1280/2), (720/2))
 
 func _process(delta: float) -> void:
-	
-	alvo_atual = null
-	var menor_distancia = INF
 	var lista_apagar = []
 	
 	for i in alvos_no_alcance:
-		if is_instance_valid(i):
-			var distancia_atual = global_position.distance_to(i.global_position)
-			if distancia_atual < menor_distancia:
-				menor_distancia = distancia_atual
-				alvo_atual = i
+		if is_instance_valid(i): #o alvo no alcance esta instaciado ou vivo?
+			pass
 		else:
-			lista_apagar.append(i)
-	alvos_no_alcance.erase(lista_apagar)
+			lista_apagar.append(i) # se não esta vivo coloque ele na lista pra apagar
 	
-	if alvo_atual != null:
-		look_at(alvo_atual.global_position)
+	for i in lista_apagar: 
+		alvos_no_alcance.erase(i) #so fica no alvos no alcance quem esta vivo
+	
+	alvos_no_alcance.sort_custom(sort_ascending) #ordeno os alvos de quem esta mais proximo da torre
+	
+	if len(alvos_no_alcance) != 0:
+		look_at(alvos_no_alcance[0].global_position)
 	else:
 		rotation_degrees = 270
 
+func sort_ascending(a, b):
+		if a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position):
+			return true
+		else:
+			return false
+
 func _on_timer_timeout() -> void:
-	if alvo_atual != null:
+	if len(alvos_no_alcance) != 0:
+		var alvo_atual = alvos_no_alcance[0]
+		look_at(alvo_atual.global_position)
 		var projetil = projetil_scena.instantiate()
 		projetil.dano_projetil = dano_da_torre
 		projetil.global_position = maker.global_position
@@ -58,7 +65,9 @@ func _on_timer_timeout() -> void:
 		get_parent().add_child(projetil)
 			
 func _on_timer_granada_timeout() -> void:
-	if alvo_atual != null:
+	if len(alvos_no_alcance) != 0:
+		var alvo_atual = alvos_no_alcance[-1]
+		look_at(alvo_atual.global_position)
 		var granada = granada_scena.instantiate()
 		granada.global_position = maker.global_position
 		granada.rotation = maker.global_rotation
@@ -67,7 +76,13 @@ func _on_timer_granada_timeout() -> void:
 		get_parent().add_child(granada)
 
 func _on_timer_perfurante_timeout() -> void:
-	if alvo_atual != null:
+	if len(alvos_no_alcance) != 0:
+		if len(alvos_no_alcance) >= 2:
+			var alvo_atual = alvos_no_alcance[1]
+			look_at(alvo_atual.global_position)
+		else:
+			alvo_atual = alvos_no_alcance[0]
+			look_at(alvo_atual.global_position)
 		var perfurante = perfurante_scene.instantiate()
 		perfurante.global_position = maker.global_position
 		perfurante.rotation = maker.global_rotation

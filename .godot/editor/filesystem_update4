@@ -1,14 +1,11 @@
+res://Cenas/mundo.tscn
 res://Cenas/tema_fontes.tres
 res://Cenas/estilodospaineis.tres
-res://Scripts/efeito_impacto.gd
-res://Cenas/efeito_impacto.tscn
-res://Scripts/inimigo.gd
-res://Cenas/mundo.tscn
+res://Scripts/torre.gd
 res://Cenas/torre.tscn
 res://Cenas/projetil.tscn
 res://Cenas/inimigo.tscn
 res://Cenas/inimigo_rapido.tscn
 res://Cenas/granada.tscn
 res://Cenas/perfurante.tscn
-res://Scripts/inimigo_rapido.gd
-res://Scripts/inimigo_tanque.gd
+res://Cenas/efeito_impacto.tscn

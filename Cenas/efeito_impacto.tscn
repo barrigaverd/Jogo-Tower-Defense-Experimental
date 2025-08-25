@@ -47,7 +47,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"impacto",
-"speed": 8.0
+"speed": 14.0
 }]
 
 [node name="efeito_impacto" type="AnimatedSprite2D"]
