@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1756071720
+::res://::1756134150
 .gitignore.txt::TextFile/TextFile::-1::1755965116::0::1::::<><><>0<>0<><>::
 ::res://addons/::1755186040
 ::res://addons/godot-git-plugin/::1755186040
@@ -8,8 +8,8 @@ plugin.cfg::TextFile/TextFile::-1::1755186040::0::1::::<><><>0<>0<><>::
 THIRDPARTY.md::TextFile/TextFile::-1::1755186040::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-git-plugin/linux/::1755186040
 ::res://addons/godot-git-plugin/macos/::1755186040
-::res://addons/godot-git-plugin/win64/::1756071713
-::res://Assets/::1755983599
+::res://addons/godot-git-plugin/win64/::1756134144
+::res://Assets/::1756135685
 AlcanceSprite.png::CompressedTexture2D/CompressedTexture2D::9202977767924544211::1755983583::1755983599::1::::<><><>0<>0<>5e600c23c4868fe71e25682a41a62faf<>res://.godot/imported/AlcanceSprite.png-8c16d1d114aacde026397c468d31154f.ctex::
 joystix monospace.otf::FontFile/FontFile::319437880196028715::1755982836::1755982836::1::::<><><>0<>0<>f50acdd798e5e10b3b2dee8e98a8b1c8<>res://.godot/imported/joystix monospace.otf-efcfed741360efa0393f5edcae146f12.fontdata::
 License.txt::TextFile/TextFile::-1::1635765884::0::1::::<><><>0<>0<><>::
@@ -18,6 +18,17 @@ Sample.png::CompressedTexture2D/CompressedTexture2D::1998311350654776189::163576
 SpriteExplosao.png::CompressedTexture2D/CompressedTexture2D::3454534154730049779::1755981657::1755981675::1::::<><><>0<>0<>d0c02df4991de220e60e0d0666e53d91<>res://.godot/imported/SpriteExplosao.png-9e21cfe7f6ad480a0d117b4f412e8d56.ctex::
 Tilesheet (Ships).txt::TextFile/TextFile::-1::1635764818::0::1::::<><><>0<>0<><>::
 Tilesheet (Tiles).txt::TextFile/TextFile::-1::1635765031::0::1::::<><><>0<>0<><>::
+::res://Assets/Explosion_1/::1756135685
+Explosion_1.png::CompressedTexture2D::6305126587035386711::1756135685::1756135685::1::::<><><>0<>0<>c0160f8fea5c20c7900422d98e69cc0f<>res://.godot/imported/Explosion_1.png-eb773db9c9aaa430da5fbb8be01f7349.ctex::
+Explosion_2.png::CompressedTexture2D::147397227206053839::1756135685::1756135685::1::::<><><>0<>0<>821ea3505c72185697781f7fd6c153ff<>res://.godot/imported/Explosion_2.png-eca299b8a2c6be603fbdaeb44e987546.ctex::
+Explosion_3.png::CompressedTexture2D::1039204191519627347::1756135685::1756135686::1::::<><><>0<>0<>86625c1d93790b7a007c783e1b41d8fc<>res://.godot/imported/Explosion_3.png-cd744cc95e2ba957571042e84a61c530.ctex::
+Explosion_4.png::CompressedTexture2D::2144073856556437832::1756135685::1756135686::1::::<><><>0<>0<>1b126ce6e51048b2383dd3f3e879bc7c<>res://.godot/imported/Explosion_4.png-0e63c388c8daf543062577e6d5bd118b.ctex::
+Explosion_5.png::CompressedTexture2D::4757283772003048019::1756135685::1756135686::1::::<><><>0<>0<>3203b3792a3276805e11d17643613652<>res://.godot/imported/Explosion_5.png-6d6d6e0e40e6c276fda84584e5e21fc0.ctex::
+Explosion_6.png::CompressedTexture2D::9098604583768585584::1756135685::1756135686::1::::<><><>0<>0<>23cd9e734ac9b66ed3e8240d0e4d75c3<>res://.godot/imported/Explosion_6.png-6bd5dbdef762859a04ae95ae431a55a1.ctex::
+Explosion_7.png::CompressedTexture2D::7370325321024948488::1756135685::1756135686::1::::<><><>0<>0<>c71d2e2fdb45e9a0a6c9bf1df4d20d84<>res://.godot/imported/Explosion_7.png-50cec5224784a108edc0d566e19462d3.ctex::
+Explosion_8.png::CompressedTexture2D::2488846985766223154::1756135685::1756135686::1::::<><><>0<>0<>43beff6188f606a059e13d77e47d2594<>res://.godot/imported/Explosion_8.png-979bdb4b4eea1f8ea119464d5568c84e.ctex::
+Explosion_9.png::CompressedTexture2D::1348626219761365112::1756135685::1756135686::1::::<><><>0<>0<>21646bfd4cab005ff66da0b078fc0bea<>res://.godot/imported/Explosion_9.png-f6c45660a343d6e3031a26d997705020.ctex::
+Explosion_10.png::CompressedTexture2D::2809920536859608849::1756135685::1756135686::1::::<><><>0<>0<>0481b1029f650225b22d2ab018c11943<>res://.godot/imported/Explosion_10.png-e2196e6a190402ebdfdca6cc8c325ee6.ctex::
 ::res://Assets/Per/::1755546402
 ::res://Assets/Per/Free 2D Animated Vector Game Character Sprites/::1755546407
 License.txt::TextFile/TextFile::-1::1659033057::0::1::::<><><>0<>0<><>::
@@ -2239,24 +2250,29 @@ tile_0116.png::CompressedTexture2D/CompressedTexture2D::3546283512862339673::163
 tile_0117.png::CompressedTexture2D/CompressedTexture2D::1996500603777352089::1635765519::1755444111::1::::<><><>0<>0<>9f3274b4825f622f57510b27bbb6e279<>res://.godot/imported/tile_0117.png-530a4988333874824497f260d6884d98.ctex::
 tile_0118.png::CompressedTexture2D/CompressedTexture2D::9097176394840998114::1635765519::1755444111::1::::<><><>0<>0<>cb1bc20ef4601cd580b399935b881691<>res://.godot/imported/tile_0118.png-32ea51424b143be946de9ebc69f69240.ctex::
 tile_0119.png::CompressedTexture2D/CompressedTexture2D::2635796179217366147::1635765519::1755444111::1::::<><><>0<>0<>23973e5e4450c6ddfdd579874353a712<>res://.godot/imported/tile_0119.png-7de59335e83ea50907beef39f3c70e48.ctex::
-::res://Cenas/::1756058136
-estilodospaineis.tres::StyleBoxFlat::6182622921382688322::1756053117::0::1::::<><><>0<>0<><>::
-inimigo.tscn::PackedScene::5620770450133458087::1756057918::0::1::::<><><>0<>0<><>::uid://ddnexlthfg7ca::::res://Scripts/inimigo.gd<>uid://egrexwvqdtwy::::res://Cenas/texto_de_dano.tscn<>uid://clibljm2aunvg::::res://Assets/Ships/ship_0022.png
-inimigo_rapido.tscn::PackedScene::5330612246010338550::1756057918::0::1::::<><><>0<>0<><>::uid://dndga1mwvqefd::::res://Scripts/inimigo_rapido.gd<>uid://bq1a73y51hsul::::res://Assets/Ships/ship_0018.png<>uid://egrexwvqdtwy::::res://Cenas/texto_de_dano.tscn
-inimigo_tanque.tscn::PackedScene::1492181975079841295::1756053118::0::1::::<><><>0<>0<><>::uid://1d6i3hin3e1g::::res://Scripts/inimigo_tanque.gd<>uid://egrexwvqdtwy::::res://Cenas/texto_de_dano.tscn<>uid://cwmhojfd7kt5v::::res://Assets/Ships/ship_0017.png
-menu_principal.tscn::PackedScene::5735345494799736822::1756053118::0::1::::<><><>0<>0<><>::uid://b6eut86pb3aig::::res://Scripts/menu_principal.gd<>uid://cuc55qbeur5fy::::res://Cenas/estilodospaineis.tres
-mundo.tscn::PackedScene::1838298906430283528::1756057918::0::1::::<><><>0<>0<><>::uid://7hbuh8vjpqfo::::res://Cenas/torre.tscn<>uid://8gh3yn3per8t::::res://Scripts/wave_manager.gd<>uid://cmc0jd60rvwup::::res://Cenas/inimigo.tscn<>uid://vi3awdpqe536::::res://Cenas/inimigo_tanque.tscn<>uid://ctagv3dbbs3jl::::res://Cenas/tema_fontes.tres<>uid://ch7gn1bngbhl3::::res://Cenas/inimigo_rapido.tscn<>uid://cuc55qbeur5fy::::res://Cenas/estilodospaineis.tres
+::res://Cenas/::1756134729
+estilodospaineis.tres::StyleBoxFlat::6182622921382688322::1756134729::0::1::::<><><>0<>0<><>::
+granada.tscn::PackedScene::6359579423632140189::1756084664::0::1::::<><><>0<>0<><>::uid://8f11bjx76504::::res://Scripts/granada.gd<>uid://d0j6q6d6srsp1::::res://Assets/Tiles/tile_0012.png<>uid://bphnw41ko1qnj::::res://Assets/SpriteExplosao.png
+inimigo.tscn::PackedScene::5620770450133458087::1756084663::0::1::::<><><>0<>0<><>::uid://ddnexlthfg7ca::::res://Scripts/inimigo.gd<>uid://egrexwvqdtwy::::res://Cenas/texto_de_dano.tscn<>uid://clibljm2aunvg::::res://Assets/Ships/ship_0022.png
+inimigo_rapido.tscn::PackedScene::5330612246010338550::1756085519::0::1::::<><><>0<>0<><>::uid://dndga1mwvqefd::::res://Scripts/inimigo_rapido.gd<>uid://bq1a73y51hsul::::res://Assets/Ships/ship_0018.png<>uid://egrexwvqdtwy::::res://Cenas/texto_de_dano.tscn
+inimigo_tanque.tscn::PackedScene/PackedScene::1492181975079841295::1756053118::0::1::::<><><>0<>0<><>::uid://1d6i3hin3e1g::::res://Scripts/inimigo_tanque.gd<>uid://egrexwvqdtwy::::res://Cenas/texto_de_dano.tscn<>uid://cwmhojfd7kt5v::::res://Assets/Ships/ship_0017.png
+menu_principal.tscn::PackedScene/PackedScene::5735345494799736822::1756053118::0::1::::<><><>0<>0<><>::uid://b6eut86pb3aig::::res://Scripts/menu_principal.gd<>uid://cuc55qbeur5fy::::res://Cenas/estilodospaineis.tres
+mundo.tscn::PackedScene::1838298906430283528::1756084663::0::1::::<><><>0<>0<><>::uid://7hbuh8vjpqfo::::res://Cenas/torre.tscn<>uid://8gh3yn3per8t::::res://Scripts/wave_manager.gd<>uid://cmc0jd60rvwup::::res://Cenas/inimigo.tscn<>uid://vi3awdpqe536::::res://Cenas/inimigo_tanque.tscn<>uid://ctagv3dbbs3jl::::res://Cenas/tema_fontes.tres<>uid://ch7gn1bngbhl3::::res://Cenas/inimigo_rapido.tscn<>uid://cuc55qbeur5fy::::res://Cenas/estilodospaineis.tres
 new_theme.tres::Theme/Theme::1749698719493845069::1755447425::0::1::::<><><>0<>0<><>::
-projetil.tscn::PackedScene::5292244499476478124::1756058136::0::1::::<><><>0<>0<><>::uid://bs0euo0nyq63c::::res://Scripts/projetil.gd<>uid://c4vvksjplr15c::::res://Assets/Tiles/tile_0000.png<>uid://bphnw41ko1qnj::::res://Assets/SpriteExplosao.png
-tema_fontes.tres::FontFile::6106832675473148205::1756053117::0::1::::<><><>0<>0<><>::
-texto_de_dano.tscn::PackedScene::294182216127554056::1756053118::0::1::::<><><>0<>0<><>::uid://d2d84pou60da0::::res://Scripts/texto_de_dano.gd
-torre.tscn::PackedScene::2260590493175095008::1756057918::0::1::::<><><>0<>0<><>::uid://vsegvb0jvrf4::::res://Scripts/torre.gd<>uid://chnuq1ym12uv1::::res://Cenas/projetil.tscn<>uid://15d0ogmaxbrb::::res://Assets/Tiles/tile_0018.png
-::res://Scripts/::1756057918
-inimigo.gd::GDScript/GDScript::7396950041460193892::1755971773::0::1::::<>CharacterBody2D<><>0<>0<><>::
-inimigo_rapido.gd::GDScript::8078275838765535053::1756054158::0::1::::<>CharacterBody2D<><>0<>0<><>::
-inimigo_tanque.gd::GDScript/GDScript::1833001062827417594::1755971773::0::1::::<>CharacterBody2D<><>0<>0<><>::
+perfurante.tscn::PackedScene::6914855382958566250::1756084664::0::1::::<><><>0<>0<><>::uid://sl81k7yvb5lh::::res://Scripts/perfurante.gd<>uid://c4vvksjplr15c::::res://Assets/Tiles/tile_0000.png
+projetil.tscn::PackedScene::5292244499476478124::1756084663::0::1::::<><><>0<>0<><>::uid://bs0euo0nyq63c::::res://Scripts/projetil.gd<>uid://gds4lahlowm5::::res://Assets/Tiles/tile_0009.png
+efeito_impacto.tscn::PackedScene::5578112899800556743::1756134729::0::1::::<><><>0<>0<><>::
+tema_fontes.tres::FontFile::6106832675473148205::1756134729::0::1::::<><><>0<>0<><>::
+texto_de_dano.tscn::PackedScene/PackedScene::294182216127554056::1756053118::0::1::::<><><>0<>0<><>::uid://d2d84pou60da0::::res://Scripts/texto_de_dano.gd
+torre.tscn::PackedScene::2260590493175095008::1756084663::0::1::::<><><>0<>0<><>::uid://vsegvb0jvrf4::::res://Scripts/torre.gd<>uid://chnuq1ym12uv1::::res://Cenas/projetil.tscn<>uid://cwuvlxvbrwonl::::res://Cenas/granada.tscn<>uid://15d0ogmaxbrb::::res://Assets/Tiles/tile_0018.png<>uid://c5ruwmrqqxjck::::res://Cenas/perfurante.tscn
+::res://Scripts/::1756085519
+granada.gd::GDScript::2328178868794444287::1756085519::0::1::::<>Area2D<><>0<>0<><>::
+inimigo.gd::GDScript::7396950041460193892::1756085519::0::1::::<>CharacterBody2D<><>0<>0<><>::
+inimigo_rapido.gd::GDScript::8078275838765535053::1756085519::0::1::::<>CharacterBody2D<><>0<>0<><>::
+inimigo_tanque.gd::GDScript::1833001062827417594::1756085519::0::1::::<>CharacterBody2D<><>0<>0<><>::
 menu_principal.gd::GDScript/GDScript::4571782399271326502::1755191821::0::1::::<>Control<><>0<>0<><>::
-projetil.gd::GDScript::3701708671448752790::1756057918::0::1::::<>Area2D<><>0<>0<><>::
+perfurante.gd::GDScript::1288158007967891405::1756085519::0::1::::<>Area2D<><>0<>0<><>::
+projetil.gd::GDScript::3701708671448752790::1756078308::0::1::::<>Area2D<><>0<>0<><>::
 texto_de_dano.gd::GDScript/GDScript::9062610221781527133::1755438991::0::1::::<>Label<><>0<>0<><>::
-torre.gd::GDScript::1511379204390166563::1756057918::0::1::::<>CharacterBody2D<><>0<>0<><>::
-wave_manager.gd::GDScript::2329094409693405449::1756057918::0::1::::<>Node<><>0<>0<><>::
+torre.gd::GDScript::1511379204390166563::1756085519::0::1::::<>CharacterBody2D<><>0<>0<><>::
+wave_manager.gd::GDScript::2329094409693405449::1756084663::0::1::::<>Node<><>0<>0<><>::

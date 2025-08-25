@@ -4,11 +4,12 @@ signal morreu(valor_recompensa)
 signal atacou_a_base(dano)
 
 @export_category("Configurações do Inimigo_tanque")
-@export var velocidade = 18
-@export var vida = 40
-@export var valor_do_inimigo = 25
-@export var dano_na_base = 20
+@export var velocidade = 20
+@export var vida = 250
+@export var valor_do_inimigo = 40
+@export var dano_na_base = 25
 @export var texto_do_dano :PackedScene
+@export var explosao : PackedScene
 @onready var torre = $"../Torre"
 var ja_morreu = false
 
@@ -48,3 +49,9 @@ func texto_flutuante(dano_recebido):
 	texto_flutuante.text = str(dano_recebido)
 	texto_flutuante.global_position = global_position
 	get_parent().add_child(texto_flutuante)
+	
+func explosao_play():
+	var exp = explosao.instantiate()
+	exp.global_position = global_position
+	get_parent().add_child(exp)
+	exp.play("impacto")

@@ -63,7 +63,7 @@ var onda_atual_index = 0
 var upgrade_tiro_perfurante = {
 	"nome_para_mostrar": "Tiro Perfurante",
 	"descricao": "Projétil atinge vários inimigos.",
-	"custo": 120,
+	"custo": 200,
 	"tipo_upgrade": "tiro_perfurante",
 	"valor" : 1
 }
@@ -71,17 +71,17 @@ var upgrade_tiro_perfurante = {
 var upgrade_dano_em_area = {
 	"nome_para_mostrar": "Dano em área",
 	"descricao": "Projétil com dano em área.",
-	"custo": 120,
+	"custo": 250,
 	"tipo_upgrade": "dano_em_area",
-	"valor" : 0.7
+	"valor" : 0.2
 }
 
 var upgrade_aumentar_dano = {
 	"nome_para_mostrar": "Canhão Melhorado",
 	"descricao": "Aumenta o dano dos projéteis em 5.",
-	"custo": 120,
+	"custo": 100,
 	"tipo_upgrade": "aumentar_dano",
-	"valor" : 10 
+	"valor" : 15 
 }
 
 var upgrade_aumentar_velocidade_ataque_torre = {
@@ -89,15 +89,15 @@ var upgrade_aumentar_velocidade_ataque_torre = {
 	"descricao": "Aumenta a velocidade de ataque da torre em 10%.",
 	"custo": 100,
 	"tipo_upgrade": "aumentar_velocidade",
-	"valor" : 0.1
+	"valor" : 0.12
 }
 
 var upgrade_alcance_melhorado = {
 	"nome_para_mostrar": "Mira de Longo Alcance",
 	"descricao": "Aumenta o alcance da torre em 15%.",
-	"custo": 100,
+	"custo": 80,
 	"tipo_upgrade": "aumentar_alcance",
-	"valor" : 0.05
+	"valor" : 0.15
 }
 
 func _ready() -> void:

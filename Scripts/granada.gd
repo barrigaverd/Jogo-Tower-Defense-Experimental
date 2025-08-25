@@ -2,7 +2,7 @@ extends Area2D
 
 @export_category("Configurações do Projétil")
 @export var velocidade = 500
-var dano_projetil = 0
+var dano_projetil = 30
 @onready var area_explosao = $AreaDeExplosao
 @onready var explosao = $AreaDeExplosao/SpriteExplosao
 var tem_dano_em_area = false

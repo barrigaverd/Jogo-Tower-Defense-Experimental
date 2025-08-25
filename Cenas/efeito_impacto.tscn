@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://clqcx7nfvuhcx"]
+
+[ext_resource type="Texture2D" uid="uid://cv3irp3ncfi7p" path="res://Assets/Explosion_1/Explosion_1.png" id="1_fwvk8"]
+[ext_resource type="Texture2D" uid="uid://cdnu1c1ejncp" path="res://Assets/Explosion_1/Explosion_2.png" id="2_ryrkm"]
+[ext_resource type="Texture2D" uid="uid://o2nsnvrk26s2" path="res://Assets/Explosion_1/Explosion_3.png" id="3_0tpk2"]
+[ext_resource type="Texture2D" uid="uid://5sut3exst1u7" path="res://Assets/Explosion_1/Explosion_4.png" id="4_wagun"]
+[ext_resource type="Texture2D" uid="uid://b81p1euc15och" path="res://Assets/Explosion_1/Explosion_5.png" id="5_dcv5d"]
+[ext_resource type="Texture2D" uid="uid://d2voxnr55f345" path="res://Assets/Explosion_1/Explosion_6.png" id="6_dvc57"]
+[ext_resource type="Texture2D" uid="uid://ddaigfqv3up3u" path="res://Assets/Explosion_1/Explosion_7.png" id="7_dw1pv"]
+[ext_resource type="Texture2D" uid="uid://bbpu7f3v32i4a" path="res://Assets/Explosion_1/Explosion_8.png" id="8_m6jsx"]
+[ext_resource type="Texture2D" uid="uid://thjxanb3h5qi" path="res://Assets/Explosion_1/Explosion_9.png" id="9_qeplw"]
+[ext_resource type="Texture2D" uid="uid://bgbe8lxy2lii0" path="res://Assets/Explosion_1/Explosion_10.png" id="10_m4tdc"]
+[ext_resource type="Script" uid="uid://buk8c78wast3x" path="res://Scripts/efeito_impacto.gd" id="11_t5xy5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p5rfp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fwvk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ryrkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0tpk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wagun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dcv5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dvc57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dw1pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m6jsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qeplw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m4tdc")
+}],
+"loop": false,
+"name": &"impacto",
+"speed": 8.0
+}]
+
+[node name="efeito_impacto" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_p5rfp")
+animation = &"impacto"
+frame = 9
+frame_progress = 1.0
+script = ExtResource("11_t5xy5")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

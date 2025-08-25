@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch7gn1bngbhl3"]
+[gd_scene load_steps=6 format=3 uid="uid://ch7gn1bngbhl3"]
 
 [ext_resource type="Script" uid="uid://dndga1mwvqefd" path="res://Scripts/inimigo_rapido.gd" id="1_1wwms"]
 [ext_resource type="Texture2D" uid="uid://bq1a73y51hsul" path="res://Assets/Ships/ship_0018.png" id="2_5jei7"]
 [ext_resource type="PackedScene" uid="uid://egrexwvqdtwy" path="res://Cenas/texto_de_dano.tscn" id="2_5xees"]
+[ext_resource type="PackedScene" uid="uid://clqcx7nfvuhcx" path="res://Cenas/efeito_impacto.tscn" id="3_5xees"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdsc4"]
 size = Vector2(57, 37)
@@ -13,6 +14,7 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_1wwms")
 texto_do_dano = ExtResource("2_5xees")
+explosao = ExtResource("3_5xees")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

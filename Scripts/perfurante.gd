@@ -2,7 +2,7 @@ extends Area2D
 
 @export_category("Configurações do Projétil")
 @export var velocidade = 500
-var dano_projetil = 0
+var dano_projetil = 25
 
 var tem_tiro_perfurante = false
 var inimigos_atingidos = []

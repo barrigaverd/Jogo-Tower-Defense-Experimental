@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var perfurante_scene : PackedScene
 @export_category("Configurações Torre")
 @export var velocidade = 250
-@export var dano_da_torre = 40
+@export var dano_da_torre = 25
 
 var alvo_atual = null
 var alvos_no_alcance = []
@@ -60,7 +60,6 @@ func _on_timer_timeout() -> void:
 func _on_timer_granada_timeout() -> void:
 	if alvo_atual != null:
 		var granada = granada_scena.instantiate()
-		granada.dano_projetil = dano_da_torre
 		granada.global_position = maker.global_position
 		granada.rotation = maker.global_rotation
 		granada.tem_dano_em_area = tem_dano_area
@@ -70,7 +69,6 @@ func _on_timer_granada_timeout() -> void:
 func _on_timer_perfurante_timeout() -> void:
 	if alvo_atual != null:
 		var perfurante = perfurante_scene.instantiate()
-		perfurante.dano_projetil = dano_da_torre
 		perfurante.global_position = maker.global_position
 		perfurante.rotation = maker.global_rotation
 		perfurante.tem_tiro_perfurante = tem_tiro_perfurante

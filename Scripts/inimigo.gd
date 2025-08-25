@@ -4,10 +4,11 @@ signal morreu(valor_recompensa)
 signal atacou_a_base(dano)
 
 @export_category("Configurações do Inimigo")
-@export var velocidade = 25
-@export var vida = 40
+@export var velocidade = 50
+@export var vida = 65
 @export var valor_do_inimigo = 10
 @export var texto_do_dano :PackedScene
+@export var explosao : PackedScene
 @export var dano_na_base = 10
 @onready var torre = $"../Torre"
 var ja_morreu = false
@@ -27,18 +28,23 @@ func _process(delta: float) -> void:
 		if col.is_in_group("torre"):
 			atacou_a_base.emit(dano_na_base)
 			texto_flutuante(dano_na_base)
+			explosao_play()
 			queue_free()
 
 func receber_dano(dano_recebido):
 	if ja_morreu:
 		return
 	else:
+		
 		vida -= dano_recebido
+		
 		texto_flutuante(dano_recebido)
+		
 		
 		print("O inimigo tomou, ", dano_recebido, " de dano!")
 		
 		if vida <= 0:
+			explosao_play()
 			print("O inimigo Morreu!")
 			ja_morreu = true
 			morreu.emit(valor_do_inimigo)
@@ -49,3 +55,9 @@ func texto_flutuante(dano_recebido):
 	texto_flutuante.text = str(dano_recebido)
 	texto_flutuante.global_position = global_position
 	get_parent().add_child(texto_flutuante)
+
+func explosao_play():
+	var exp = explosao.instantiate()
+	exp.global_position = global_position
+	get_parent().add_child(exp)
+	exp.play("impacto")

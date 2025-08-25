@@ -68,5 +68,5 @@ texture = SubResource("CompressedTexture2D_j3rtk")
 [connection signal="timeout" from="alcance/TimerNormal" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="alcance/TimerGranada" to="." method="_on_timer_granada_timeout"]
 [connection signal="timeout" from="alcance/TimerGranada" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="alcance/TimerPerfurante" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="alcance/TimerPerfurante" to="." method="_on_timer_perfurante_timeout"]
+[connection signal="timeout" from="alcance/TimerPerfurante" to="." method="_on_timer_timeout"]
