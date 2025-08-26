@@ -44,9 +44,9 @@ func _process(delta: float) -> void:
 	alvos_no_alcance.sort_custom(sort_ascending) #ordeno os alvos de quem esta mais proximo da torre
 	
 	if len(alvos_no_alcance) != 0:
+		if timer.is_stopped():
+			timer.start()
 		look_at(alvos_no_alcance[0].global_position)
-	else:
-		rotation_degrees = 270
 
 func sort_ascending(a, b):
 		if a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position):
@@ -55,6 +55,7 @@ func sort_ascending(a, b):
 			return false
 
 func _on_timer_timeout() -> void:
+	print("Disparo Normal Aconteceu no temo: " + str(Time.get_ticks_msec()))
 	if len(alvos_no_alcance) != 0:
 		var alvo_atual = alvos_no_alcance[0]
 		look_at(alvo_atual.global_position)
@@ -76,6 +77,7 @@ func _on_timer_granada_timeout() -> void:
 		get_parent().add_child(granada)
 
 func _on_timer_perfurante_timeout() -> void:
+	print("Disparo Perfurante Aconteceu no temo: " + str(Time.get_ticks_msec()))
 	if len(alvos_no_alcance) != 0:
 		if len(alvos_no_alcance) >= 2:
 			var alvo_atual = alvos_no_alcance[1]
