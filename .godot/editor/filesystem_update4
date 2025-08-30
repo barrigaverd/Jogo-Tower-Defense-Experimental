@@ -1,7 +1,8 @@
 res://Cenas/mundo.tscn
 res://Cenas/tema_fontes.tres
 res://Cenas/estilodospaineis.tres
-res://Scripts/torre.gd
+res://Scripts/Upgrade.gd
+res://Scripts/wave_manager.gd
 res://Cenas/torre.tscn
 res://Cenas/projetil.tscn
 res://Cenas/inimigo.tscn
@@ -9,3 +10,5 @@ res://Cenas/inimigo_rapido.tscn
 res://Cenas/granada.tscn
 res://Cenas/perfurante.tscn
 res://Cenas/efeito_impacto.tscn
+res://Scripts/torre.gd
+res://Scripts/Onda.gd

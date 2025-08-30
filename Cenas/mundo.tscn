@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://1gqrqwmx46jc"]
+[gd_scene load_steps=23 format=3 uid="uid://1gqrqwmx46jc"]
 
 [ext_resource type="PackedScene" uid="uid://7hbuh8vjpqfo" path="res://Cenas/torre.tscn" id="1_oji8i"]
 [ext_resource type="Script" uid="uid://8gh3yn3per8t" path="res://Scripts/wave_manager.gd" id="2_j5dva"]
@@ -6,7 +6,75 @@
 [ext_resource type="PackedScene" uid="uid://vi3awdpqe536" path="res://Cenas/inimigo_tanque.tscn" id="4_qboq2"]
 [ext_resource type="FontFile" uid="uid://ctagv3dbbs3jl" path="res://Cenas/tema_fontes.tres" id="5_1ag4k"]
 [ext_resource type="PackedScene" uid="uid://ch7gn1bngbhl3" path="res://Cenas/inimigo_rapido.tscn" id="5_osa5f"]
+[ext_resource type="Script" uid="uid://dm4ekes02v873" path="res://Scripts/Onda.gd" id="6_bjsl6"]
+[ext_resource type="Script" uid="uid://xwuxyfxd84c0" path="res://Scripts/Upgrade.gd" id="6_j4kvc"]
 [ext_resource type="StyleBox" uid="uid://cuc55qbeur5fy" path="res://Cenas/estilodospaineis.tres" id="6_osa5f"]
+
+[sub_resource type="Resource" id="Resource_j20r2"]
+script = ExtResource("6_bjsl6")
+normal = 5
+tanque = 0
+rapido = 0
+metadata/_custom_type_script = "uid://dm4ekes02v873"
+
+[sub_resource type="Resource" id="Resource_afyt6"]
+script = ExtResource("6_bjsl6")
+normal = 8
+tanque = 0
+rapido = 0
+metadata/_custom_type_script = "uid://dm4ekes02v873"
+
+[sub_resource type="Resource" id="Resource_xypay"]
+script = ExtResource("6_bjsl6")
+normal = 5
+tanque = 0
+rapido = 3
+metadata/_custom_type_script = "uid://dm4ekes02v873"
+
+[sub_resource type="Resource" id="Resource_bjsl6"]
+script = ExtResource("6_j4kvc")
+nome_para_mostrar = "Tiro Perfurante"
+custo = 200
+valor = 1.0
+descricao = "Projétil atinge vários inimigos."
+tipo_upgrade = "tiro_perfurante"
+metadata/_custom_type_script = "uid://xwuxyfxd84c0"
+
+[sub_resource type="Resource" id="Resource_yn71n"]
+script = ExtResource("6_j4kvc")
+nome_para_mostrar = "Dano em Área"
+custo = 250
+valor = 0.2
+descricao = "Projétil com dano em área."
+tipo_upgrade = "dano_em_area"
+metadata/_custom_type_script = "uid://xwuxyfxd84c0"
+
+[sub_resource type="Resource" id="Resource_c6pvx"]
+script = ExtResource("6_j4kvc")
+nome_para_mostrar = "+ Dano Projétil"
+custo = 100
+valor = 15.0
+descricao = "Aumenta o dano dos projéteis em 5."
+tipo_upgrade = "aumentar_dano"
+metadata/_custom_type_script = "uid://xwuxyfxd84c0"
+
+[sub_resource type="Resource" id="Resource_nt6ue"]
+script = ExtResource("6_j4kvc")
+nome_para_mostrar = "+ Velocidade da Torre"
+custo = 100
+valor = 0.12
+descricao = "Aumenta a velocidade de ataque da torre em 10%."
+tipo_upgrade = "aumentar_velocidade"
+metadata/_custom_type_script = "uid://xwuxyfxd84c0"
+
+[sub_resource type="Resource" id="Resource_ktpro"]
+script = ExtResource("6_j4kvc")
+nome_para_mostrar = "+ Alcance da Torre"
+custo = 80
+valor = 0.1
+descricao = "Aumenta o alcance da torre em 15%."
+tipo_upgrade = "aumentar_alcance"
+metadata/_custom_type_script = "uid://xwuxyfxd84c0"
 
 [sub_resource type="LabelSettings" id="LabelSettings_bjsl6"]
 font = ExtResource("5_1ag4k")
@@ -44,6 +112,8 @@ script = ExtResource("2_j5dva")
 inimigo1_scene = ExtResource("3_8gp82")
 inimigo_tanque_scene = ExtResource("4_qboq2")
 inimigo_rapido_scene = ExtResource("5_osa5f")
+nome_das_ondas = Array[ExtResource("6_bjsl6")]([SubResource("Resource_j20r2"), SubResource("Resource_afyt6"), SubResource("Resource_xypay")])
+catalogo_de_upgrades = [SubResource("Resource_bjsl6"), SubResource("Resource_yn71n"), SubResource("Resource_c6pvx"), SubResource("Resource_nt6ue"), SubResource("Resource_ktpro")]
 
 [node name="Vida_Canva" type="CanvasLayer" parent="."]
 

@@ -100,8 +100,8 @@ func _on_alcance_body_exited(body: Node2D) -> void:
 		alvos_no_alcance.erase(body)
 
 func aplicar_melhoria(dicionario_melhoria):
-	var nome_do_upgrade = dicionario_melhoria["tipo_upgrade"] #"aumentar_alcance"
-	var valor_do_upgrade = dicionario_melhoria["valor"] #0.05
+	var nome_do_upgrade = dicionario_melhoria.tipo_upgrade #"aumentar_alcance"
+	var valor_do_upgrade = dicionario_melhoria.valor #0.05
 	if nome_do_upgrade == "aumentar_dano":
 		aumentar_dano(valor_do_upgrade)
 	elif nome_do_upgrade == "aumentar_velocidade":
